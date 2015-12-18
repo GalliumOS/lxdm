@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LXDE\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2012-10-12 05:04+0200\n"
+"Last-Translator: Duy Hung <nguyentieuhau@gmail.com>\n"
+"Language-Team: Viet <nguyentieuhau@gmail.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
+"X-Poedit-Language: Vietnamese\n"
+"X-Poedit-Country: Vietnam\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Người dùng:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Máy tính:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Ngôn ngữ:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Bàn phím:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "cấu hình lxdm"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Tự động đăng nhập"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Nền"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Mặc định"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Bật bảng điều khiển dưới cùng"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Tùy chọn bảng điều khiển dưới cùng"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Bảng điều khiển trong suốt"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Ẩn phiên làm việc"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Hiển thị trình đơn ngôn ngữ"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Hiển thị kiểu bàn phím"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Ẩn nút thoát"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Tùy chọn khác"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Hiển thị danh sách người dùng"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Ẩn thời gian"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Chưa xác định"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Mật khẩu:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Khởi động lại"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Tắt máy"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>đã đăng nhập</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Xem thêm.."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Duyệt thêm nhiều ảnh..."

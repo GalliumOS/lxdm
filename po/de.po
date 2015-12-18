@@ -1,0 +1,145 @@
+# German translations for PACKAGE package
+# German messages for PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Mark Trompell <mark@foresightlinux.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxdm r2100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2013-07-25 11:33+0000\n"
+"Last-Translator: Daniel <d@winzen4.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1374751980.0\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Benutzer:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Desktop:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Sprache:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Tastatur:"
+
+# Dies ist der Fenstertitel
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "Einstellungen für den Anmeldebildschirm"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Automatische Anmeldung"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Hintergrund"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Standard"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Untere Leiste aktivieren"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Optionen für untere Leiste"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Transparente Leiste"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Sitzungen verstecken"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Sprachauswahl anzeigen"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Tastaturbelegung anzeigen"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Beenden-Knopf ausblenden"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Andere Optionen"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Benutzerliste anzeigen"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Zeit ausblenden"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Nicht festgelegt"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Passwort:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Neustarten"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Beenden"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>angemeldet</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Weitere…"
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Nach weiteren Bildern suchen..."
+
+#~ msgid "US English"
+#~ msgstr "Englisch (USA)"
+
+#~ msgid "Simpllified Chinese"
+#~ msgstr "Chinesisch (vereinfacht)"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Chinesisch (traditionell)"
+
+#~ msgid "German"
+#~ msgstr "Deutsch"
+
+#~ msgid "Italian"
+#~ msgstr "Italienisch"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugiesisch"

@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+
+LDFLAGS+=-Wl,-z,defs -Wl,--as-needed
+
+# Rename config file
+config_file = /etc/lxdm/default.conf
+CFLAGS+=-DCONFIG_FILE=\"$(config_file)\"
+
+%:
+	dh ${@} --with systemd --parallel
+
+override_dh_auto_configure:
+	dh_auto_configure -- --prefix=/usr \
+		--bindir=/usr/bin \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib/lxdm \
+		--with-pam
+
+override_dh_auto_install:
+	dh_auto_install -- DESTDIR=$(CURDIR)/debian/lxdm
+
+override_dh_install:
+	dh_install --fail-missing
+
+	mv debian/lxdm/etc/insserv.conf.d/lxdm.insserv debian/lxdm/etc/insserv.conf.d/lxdm
+
+override_dh_installinit:
+	dh_installinit --no-start -- defaults 30 01
+
+override_dh_systemd_start:
+	dh_systemd_start -plxdm --no-start -r lxdm.service
+
+override_dh_strip:
+	dh_strip --dbg-package=lxdm-dbg

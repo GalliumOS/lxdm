@@ -1,0 +1,5 @@
+/var/log/lxdm.log {
+    missingok
+    notifempty
+    copytruncate
+} 

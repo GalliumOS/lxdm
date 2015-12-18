@@ -1,0 +1,33 @@
+Description: Change background-image to debians default and stop remaining users processes
+Forwarded: not-needed
+Author:Klaumi Klingsporn <klaumikli@gmx.de
+
+--- a/data/lxdm.conf.in
++++ b/data/lxdm.conf.in
+@@ -34,7 +34,8 @@
+ gtk_theme=Clearlooks
+ 
+ ## background of the greeter
+-bg=/usr/share/backgrounds/default.png
++#bg=/usr/share/backgrounds/default.png
++bg=/usr/share/images/desktop-base/login-background.svg
+ 
+ ## if show bottom pane
+ bottom_pane=1
+--- a/data/PostLogout.in
++++ b/data/PostLogout.in
+@@ -1,3 +1,13 @@
+ #!/bin/sh
+ #
+-# Note: this is a sample and will not be run as is.
++# PostLogout is run as the logged-in user right after he has logged out.
++
++# Kills all your processes when you log out.
++# (Stolen von Arch-Linux)
++ps --user $USER | awk 'NR > 1 {print $1}' | xargs -t kill
++
++# Fix for pulseaudio (Stolen von Arch-Linux):
++test -x /usr/bin/pax11publish && /usr/bin/pax11publish -r
++
++# Sets the desktop background to solid black. Useful if you have multiple monitors.
++xsetroot -solid black

@@ -1,0 +1,17 @@
+dgod <dgod.osa@gmail.com>
+Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+
+File in src/gdm were taken from gdm.
+
+src/gdm/gdm-languages.[ch]:
+  Copyright 2008  Red Hat, Inc,
+            2007  William Jon McCann <mccann@jhu.edu>
+                  Ray Strode
+
+src/gdm/locarchive.h:
+  Copyright (C) 2002 Free Software Foundation, Inc.
+
+Image files in data/theme/Industrial are taken from 'industrial' gdm theme.
+  License: GPL v2 or later
+  Copyright (C) 2002 Ximian, Inc.
+  Jakub Steiner <jimmac@ximian.com>

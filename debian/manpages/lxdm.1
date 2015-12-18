@@ -1,0 +1,88 @@
+.TH LXDM 1 "March 2010"
+
+.SH NAME
+lxdm \- LXDE Display Manager (Login screen)
+
+.SH SYNOPSIS
+.B lxdm
+	[options]
+.br
+.SH DESCRIPTION
+.B lxdm 
+is the LXDE display manager also known as login manager. It shows a graphical login screen for usernames and password and allows you to choose a desktop and language for the session. After authenticating a user it starts a session.
+
+lxdm works with various desktops like LXDE, KDE and others.
+
+.PP
+.SH OPTIONS
+.TP
+.B	\-d 
+daemon mode
+.TP
+.B      \-h 
+help
+
+.SH FILES
+.TP
+.I	/var/log/lxdm.log
+log information
+.TP
+.I	/etc/lxdm/Xsession
+script to run as user after login of user
+.TP
+.I	/etc/lxdm/default.conf
+configuration file for lxdm. It's a symlink to the real configuration file
+(/etc/lxdm/lxdm.conf for standard lxdm, /etc/xdg/lubuntu/lxdm/lxdm.conf for
+Lubuntu). See below for details of the configuration file.
+
+.SH CONFIGURATION FILE
+The configuration file is /etc/lxdm/default.conf, which is a symlink to the
+real configuration file. (/etc/lxdm/lxdm.conf for standard lxdm,
+/etc/xdg/lubuntu/lxdm/lxdm.conf for Lubuntu).
+
+To update the symlink, type "update\-alternative \-\-config lxdm.conf" and follow
+the instructions.
+
+.B	autologin
+.TP
+Enable autologin if you set autologin=user, when user is your login. Disable by default, you need to uncomment the line.
+.TP
+
+.B	session
+.TP
+Default session which will be started if "Default" session is provided at login. Disable by default, you need to uncomment the line.
+.TP
+
+.B	numlock
+.TP
+Enable numlock support. Disable by default, you need to uncomment the line.
+.TP
+
+.B	arg
+.TP
+Override arguments passed to the Xserver. Disable by default, you need to uncomment the line.
+.TP
+.B	gtk_theme
+.TP
+Select the gtk theme for the greeter.
+.TP
+.B	bg
+.TP
+Select the path of the background of the greeter.
+.TP
+.B bottom_pane
+.TP
+Select if the bottom panel is available. 1 to TRUE, 0 to FALSE.
+.TP
+.B lang
+.TP
+Select if the language choose if available. 1 to TRUE, 0 to FALSE.
+.TP
+.B theme
+.TP
+Select the theme for the greeter. Theme are located in /usr/share/lxdm/themes/
+
+.SH AUTHORS
+This manual page was written by Trevor Walkley <bluewater@sidux.com> for the Debian Project, but may be used by others. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or any later version published by the Free Software Foundation.
+
+On Debian systems, the complete  text  of  the  GNU  General  Public License can be found in /usr/share/common\-licenses/GPL.

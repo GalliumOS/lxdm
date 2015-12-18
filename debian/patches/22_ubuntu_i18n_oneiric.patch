@@ -1,0 +1,54 @@
+Description: Adapt to the Oneiric model for setting languages/locales.
+Forwarded: not-needed
+Author: Gunnar Hjalmarsson <ubuntu@gunnar.cc>
+
+--- a/data/Xsession
++++ b/data/Xsession
+@@ -9,9 +9,20 @@
+ 	LXSESSION=/usr/bin/startlxde
+ fi
+ 
++[ -f /etc/profile ] && . /etc/profile
++[ -f ~/.profile ] && . ~/.profile
+ [ -f /etc/xprofile ] && . /etc/xprofile
+ [ -f ~/.xprofile ] && . ~/.xprofile
+ 
++# override ~/.profile if language was set on the greeter
++if [ -n "$GREETER_LANGUAGE" ]; then
++	language_list=${GREETER_LANGUAGE%.*}${GREETER_LANGUAGE#*.UTF-8}:en
++	export LANGUAGE="$language_list"
++	export LC_MESSAGES="$GREETER_LANGUAGE"
++	export LC_CTYPE="$GREETER_LANGUAGE"
++	export LC_COLLATE="$GREETER_LANGUAGE"
++fi
++
+ if [ -f /etc/X11/xinit/xinitrc-common ]; then
+ # fedora
+ 	. /etc/X11/xinit/xinitrc-common
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -1214,11 +1214,6 @@
+ 			session=g_key_file_get_string(dmrc,"Desktop","Session",NULL);
+ 			alloc_session=TRUE;
+ 		}
+-		if(!lang || !lang[0])
+-		{
+-			lang=g_key_file_get_string(dmrc,"Desktop","Language",NULL);
+-			alloc_lang=TRUE;
+-		}
+ 		g_key_file_free(dmrc);
+ 	}
+ 
+@@ -1325,9 +1320,9 @@
+ 	/* optionally override $LANG, $LC_MESSAGES, and $LANGUAGE */
+ 	if( lang && lang[0] )
+ 	{
+-		env=g_environ_setenv(env, "LANG", lang, TRUE);
+-		env=g_environ_setenv(env, "LC_MESSAGES", lang, TRUE);
+-		env=g_environ_setenv(env, "LANGUAGE", lang, TRUE);
++		/* use this special environment variable to set the language related
++		   env. variables from Xsession after ~/.profile has been sourced */
++		env=g_environ_setenv(env, "GREETER_LANGUAGE", lang, TRUE);
+ 	}
+ 	
+ #ifndef DISABLE_XAUTH

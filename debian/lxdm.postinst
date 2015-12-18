@@ -1,0 +1,78 @@
+#!/bin/sh
+# Debian lxdm package post-installation script
+# Based on xdm.postinst
+# Copyright 1998-2001, 2003, 2004 Branden Robinson.
+# Licensed under the GNU General Public License, version 2.  See the file
+# /usr/share/common-licenses/GPL or <http://www.gnu.org/copyleft/gpl.txt>.
+# Acknowledgements to Stephen Early, Mark Eichin, and Manoj Srivastava.
+
+
+set -e
+
+# source debconf library
+. /usr/share/debconf/confmodule
+
+THIS_PACKAGE=lxdm
+
+DEFAULT_DISPLAY_MANAGER_FILE=/etc/X11/default-display-manager
+
+# debconf is not a registry, so we only fiddle with the default file if it
+# does not exist
+if ! [ -e "$DEFAULT_DISPLAY_MANAGER_FILE" ]; then
+  DEFAULT_DISPLAY_MANAGER=
+  if db_get shared/default-x-display-manager; then
+    DEFAULT_DISPLAY_MANAGER="$RET"
+  fi
+  if [ -n "$DEFAULT_DISPLAY_MANAGER" ]; then
+    DAEMON_NAME=
+    if db_get "$DEFAULT_DISPLAY_MANAGER"/daemon_name; then
+      DAEMON_NAME="$RET"
+    fi
+    if [ -z "$DAEMON_NAME" ]; then
+      # if we were unable to determine the name of the selected daemon (for
+      # instance, if the selected default display manager doesn't provide a
+      # daemon_name question), guess
+      DAEMON_NAME=$(which "$DEFAULT_DISPLAY_MANAGER" 2>/dev/null)
+    fi
+    if [ -n "$DAEMON_NAME" ]; then
+      echo "$DAEMON_NAME" > "$DEFAULT_DISPLAY_MANAGER_FILE"
+    fi
+  fi
+fi
+
+# Registering the init scripts or starting the daemon may cause output to
+# stdout, which can confuse debconf.
+db_stop || true
+
+if [ "$1" = "configure" ];
+then
+  invoke-rc.d dbus reload || true
+
+# set default-display-manager systemd service link according to our config (stolen from lightdm)
+  if [ -e "$DEFAULT_DISPLAY_MANAGER_FILE" -a -d /etc/systemd/system/ ]; then
+    SERVICE=/lib/systemd/system/$(basename $(cat "$DEFAULT_DISPLAY_MANAGER_FILE")).service
+    if [ -e "$SERVICE" ]; then
+      ln -sf "$SERVICE" /etc/systemd/system/display-manager.service
+    else
+      echo "ERROR: $SERVICE is the selected default display manager but does not exist" >&2
+    fi
+  fi
+fi
+
+# Remove alternative file if it's not a symlink, workaround for broken upgrade
+# See bug #616188
+if [ -f /etc/alternatives/lxdm.conf ] ; then
+  if [ ! -h "/etc/alternatives/lxdm.conf" ] ; then
+    rm "/etc/alternatives/lxdm.conf"
+  fi
+fi
+
+# Add /etc/lxdm/lxdm.conf from alternative of lxdm configuration
+if [ "$1" = configure ]; then
+  update-alternatives --install /etc/lxdm/default.conf \
+    lxdm.conf /etc/lxdm/lxdm.conf 50
+fi
+
+#DEBHELPER#
+
+exit 0

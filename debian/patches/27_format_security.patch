@@ -1,0 +1,14 @@
+Description: Fix non-literal format string in g_message.
+Author: Andriy Grytsenko <andrej@rep.kiev.ua>
+
+--- a/src/ui.c
++++ b/src/ui.c
+@@ -145,7 +145,7 @@
+ 	else if( !strncmp(str, "shutdown", 6) )
+ 		lxdm_do_shutdown();
+ 	else if( !strncmp(str, "log ", 4) )
+-		g_message(str + 4);
++		g_message("%s", str + 4);
+ 	else if( !strncmp(str, "login ", 6) )
+ 	{
+ 		char *user = greeter_param(str, "user");

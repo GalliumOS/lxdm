@@ -1,0 +1,5 @@
+version=3
+opts=uversionmangle=s/(\d)[_\.\-\+]?((RC|rc|beta|alpha)\d*)$/$1~$2/ \
+http://sf.net/lxdm/lxdm-(\d\S*)\.tar\.(?:xz|gz)
+opts=uversionmangle=s/(\d)[_\.\-\+]?((RC|rc|beta|alpha)\d*)$/$1~$2/ \
+http://sf.net/lxde/lxdm-(\d\S*)\.tar\.(?:xz|gz)

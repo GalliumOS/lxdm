@@ -1,0 +1,43 @@
+Source: lxdm
+Section: x11
+Priority: optional
+Maintainer: Debian LXDE Maintainers <lxde-debian@lists.lxde.org>
+Uploaders:
+ Andrew Lee (李健秋) <ajqlee@debian.org>,
+ Andriy Grytsenko <andrej@rep.kiev.ua>
+Build-Depends:
+ debhelper (>= 9), intltool, iso-codes,
+ libck-connector-dev, libgtk2.0-dev, libpam0g-dev,
+ libx11-dev, libxmu-dev, pkg-config,
+ dh-systemd, po-debconf
+Standards-Version: 3.9.6
+Homepage: http://www.lxde.org/
+Vcs-Browser: http://git.lxde.org/gitweb/?p=debian/lxdm.git
+Vcs-Git: git://git.lxde.org/git/debian/lxdm.git
+
+Package: lxdm
+Architecture: any
+Depends:
+ ${misc:Depends}, ${shlibs:Depends}, gtk2-engines-pixbuf, iso-codes,
+ libpam-modules, libpam-runtime, librsvg2-common, lsb-base,
+ x11-utils | xmessage,
+ debconf (>= 1.2.9) | debconf-2.0, desktop-base
+Recommends: lxde-common, lxsession
+Provides: x-display-manager
+Description: LXDE display manager
+ LXDM is a GUI application for the Lightweight X11 Desktop Environment
+ (LXDE).
+ .
+ It's a lightweight login manager which can be used as a replacement for
+ GDM or KDM.
+
+Package: lxdm-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: ${misc:Depends}, lxdm (= ${binary:Version})
+Description: LXDE display manager (debug symbols)
+ LXDM is a GUI application for the Lightweight X11 Desktop Environment
+ (LXDE).
+ .
+ This package contains debugging symbols for the LXDM.

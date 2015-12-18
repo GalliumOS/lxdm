@@ -1,0 +1,3 @@
+debian/local/lxdm.insserv	etc/insserv.conf.d/
+debian/local/lxdm-environment	etc/
+debian/local/GalliumOS		usr/share/lxdm/themes/

@@ -1,0 +1,12 @@
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1,7 +1,9 @@
+ [type: gettext/glade]data/lxdm.glade
+ [type: gettext/glade]data/config.ui
+ [type: gettext/glade]data/themes/Industrial/greeter.ui
++[type: gettext/glade]debian/local/GalliumOS/greeter.ui
+ data/themes/Industrial/greeter-gtk3.ui
++debian/local/GalliumOS/greeter-gtk3.ui
+ src/gdm/gdm-languages.c
+ src/greeter.c
+ src/lang.c

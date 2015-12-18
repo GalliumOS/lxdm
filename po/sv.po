@@ -1,0 +1,145 @@
+# Swedish translation of the LXDM package.
+# Copyright (C) 2010 Martin Bagge <brother@bsnet.se>
+# This file is distributed under the same license as the LXDM package.
+# Martin Bagge <brother@bsnet.se>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2012-09-23 15:03+0200\n"
+"Last-Translator: Martin <brother@bsnet.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"X-Poedit-Language: Swedish\n"
+"X-Poedit-Country: Sweden\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Användare:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Skrivbord:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Språk:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Tangentbord:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "lxdm-inställningar"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Automatisk inloggning"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Bakgrund"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Standard"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Aktivera panel i nederkant"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Alternativ för panel i nederkant"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Genomskinlig panel"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Göm sessioner"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Visa språkmeny"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Visa tangentbordsuppsättningar"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Göm knapp för att avsluta"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Andra alternativ"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Visa användarlista"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Göm tid"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Ospecificerat"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Starta om"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Avsluta"
+
+# ?
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>inloggade</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Mer ..."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Leta upp fler bilder..."
+
+#~ msgid "US English"
+#~ msgstr "Amerikansk engelska"
+
+#~ msgid "Simpllified Chinese"
+#~ msgstr "Förenklad kinesiska"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Traditionell kinesiska"
+
+#~ msgid "German"
+#~ msgstr "Tyska"
+
+#~ msgid "Italian"
+#~ msgstr "Italienska"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugisiska"

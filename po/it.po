@@ -1,0 +1,143 @@
+# Translation of lxdm to Italian
+# Copyright (C) 2012 THE lxdm'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxdm package.
+# Alessandro <alex@amiran.it>, 2011\n"
+# Daniele Forsi <daniele@forsi.it>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: lxem r2100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2013-07-15 12:01+0000\n"
+"Last-Translator: Daniele <daniele@forsi.it>\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1373889713.0\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Utente:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Desktop:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Lingua:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Tastiera:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "lxdm config"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Accesso automatico"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Sfondo"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Predefinito"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Abilitare il pannello inferiore"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Opzioni del pannello inferiore"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Pannello trasparente"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Nascondere le sessioni"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Mostra menu lingue"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Mostra disposizioni tastiera"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Nascondere il pulsante «Esci»"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Altre opzioni"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Mostra elenco utenti"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Nascondere l'ora"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Non specificato"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Password:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Riavvia"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Spegni"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>connesso</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Di più..."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Esplora altre immagini..."
+
+#~ msgid "US English"
+#~ msgstr "Inglese US"
+
+#~ msgid "Simpllified Chinese"
+#~ msgstr "Cinese Semplificato"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Cinese Tradizionale"
+
+#~ msgid "German"
+#~ msgstr "Tedesco"
+
+#~ msgid "Italian"
+#~ msgstr "Italiano"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portoghese"

@@ -1,0 +1,60 @@
+# Catalan translations for x11-xorg package
+# Copyright (C) 2000-2004 Branden Robinson
+# Copyright (C) 2002-2007 Ivan Vilata i Balaguer <net.selidor@ivan>
+# This file is distributed under the same license as the xorg-x11 package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xdm 1:1.0.5-2\n"
+"Report-Msgid-Bugs-To: lxdm@packages.debian.org\n"
+"POT-Creation-Date: 2007-05-31 08:04+0200\n"
+"PO-Revision-Date: 2007-03-22 11:00+0100\n"
+"Last-Translator: Ivan Vilata i Balaguer <ivan@selidor.net>\n"
+"Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid "Default display manager:"
+msgstr "Escolliu el gestor de pantalla:"
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"A display manager is a program that provides graphical login capabilities "
+"for the X Window System."
+msgstr ""
+"Un gestor de pantalla (display manager) és un programa que proporciona la "
+"capacitat d’un quadre gràfic d’entrada (login) a l’X Window System."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Only one display manager can manage a given X server, but multiple display "
+"manager packages are installed. Please select which display manager should "
+"run by default."
+msgstr ""
+"Només un gestor de pantalla pot gestionar un servidor X determinat, però "
+"teniu instaŀlats diversos paquets de gestor de pantalla.  Per favor, "
+"escolliu quin gestor de pantalla s'executarà per defecte."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Multiple display managers can run simultaneously if they are configured to "
+"manage different servers; to achieve this, configure the display managers "
+"accordingly, edit each of their init scripts in /etc/init.d, and disable the "
+"check for a default display manager."
+msgstr ""
+"Poden haver diversos gestors de pantalla corrent simultàniament si es "
+"configuren per a gestionar diferents servidors; per a aconseguir açò, "
+"configureu adequadament els gestors de pantalla, editeu cadascun dels seus "
+"scripts d’inici en «/etc/init.d», i deshabiliteu la comprovació de gestor de "
+"pantalla per defecte."

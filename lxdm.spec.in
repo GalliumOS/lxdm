@@ -1,0 +1,72 @@
+# on SuSE based distros that's allow compilation
+# without root rights, on other distros that's just
+# a comment, you should keep it.
+# norootforbuild
+
+Name:		lxdm
+Version:	@PACKAGE_VERSION@
+Release:	1
+Summary:	Light weight X11 display manager
+License:	GPL
+Group:		User Interface/X
+URL:		http://lxde.sourceforge.net/
+Source0:	lxdm-%{version}.tar.xz
+
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
+BuildRequires:	gtk3-devel pam-devel intltool
+Provides:       service(graphical-login) = lxdm
+
+%description
+Light weight X11 display manager
+
+%prep
+%setup -q
+
+%build
+export CFLAGS="$RPM_OPT_FLAGS"
+export CXXFLAGS="$RPM_OPT_FLAGS"
+
+%configure --enable-gtk3
+
+%__make
+
+%install
+make DESTDIR=${RPM_BUILD_ROOT} install
+cd ${RPM_BUILD_ROOT}/%{_sysconfdir}/lxdm
+rm -rf LoginReady PostLogin PreLogin PostLogout PreReboot PreShutdown
+cd -
+
+%find_lang %{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+
+%pre
+
+%preun
+
+%postun
+
+%files -f %{name}.lang
+%defattr (-,root,root,-)
+%doc AUTHORS NEWS README COPYING INSTALL ChangeLog
+%dir %{_datadir}/lxdm/
+%{_datadir}/lxdm/*
+%dir %{_sysconfdir}/lxdm/
+%{_sbindir}/lxdm
+%{_sbindir}/lxdm-binary
+%{_bindir}/lxdm-config
+%{_libexecdir}/lxdm-greeter-gtk
+%{_libexecdir}/lxdm-greeter-gdk
+%{_libexecdir}/lxdm-numlock
+%{_libexecdir}/lxdm-session
+%{_sysconfdir}/lxdm/Xsession
+%config %{_sysconfdir}/lxdm/lxdm.conf
+%{_sysconfdir}/pam.d/lxdm
+%{_unitdir}/lxdm.service
+
+%changelog
+

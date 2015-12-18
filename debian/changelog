@@ -1,0 +1,485 @@
+lxdm (0.5.0-3-galliumos3) unstable; urgency=low
+
+  * Added GalliumOS theme
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Thu, 17 Dec 2015 21:34:36 +0200
+
+lxdm (0.5.0-3-galliumos2) unstable; urgency=low
+
+  * Changed config for galliumos
+  * Removed busname line in service file to prevent lxdm from restarting every 2 mins
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Thu, 17 Dec 2015 21:34:36 +0200
+
+lxdm (0.5.0-3) unstable; urgency=low
+
+  * Handle dangling symlink /etc/systemd/system/display-manager.service in
+    postrm scrypt (fix PIUPARTS error).
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Sun, 23 Nov 2014 21:34:36 +0200
+
+lxdm (0.5.0-2) unstable; urgency=low
+
+  * Fixing problem with lxdm.service file: no Alias setting is required
+    (Closes: #770404).
+  * Adding lintian-overrides file for debian-watch-may-check-gpg-signature.
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Sat, 22 Nov 2014 15:09:33 +0200
+
+lxdm (0.5.0-1) unstable; urgency=low
+
+  * Packaging for Debian (Closes: #560004, #575738).
+  * Removing Daniel Baumann from uploaders since he left the team. :(
+  * Adding myself to uploaders.
+  * Bump Standards-Version to 3.9.6.
+  * Updating watch file to support XZ tarball format and non-numeric versions.
+  * Correct installation similar to what is done in ArchLinux.
+  * Restoring patches 15-path-replace.patch and 22_ubuntu_i18n_oneiric.patch.
+  * Fixing compilation: adding 27_format_security.patch.
+  * Adding --fail-missing to dh_install parameters.
+  * Removing unneeded build dependencies.
+  * Adding missing ${shlibs:Depends} dependency.
+  * Fixing manpages installed: lxdm-config was missing.
+  * Fixing missing backslashes before minus signs in the manpage.
+  * Fixing duplicate update-rc.d invocation in postinstall script.
+  * Removing obsolete xbase-clients from dependencies.
+  * Fixing two mistakes in debian/copyright file.
+  * Adding package lxdm-dbg with debug symbols.
+  * Removing override_dh_test rule - it appears fixed by upstream.
+  * Adding "status" command handler for init script.
+  * Adding debian/clean file for generated data/lxdm.conf shipped in tarball.
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Sat, 25 Oct 2014 16:22:38 +0300
+
+lxdm (0.5.0-0vkmk2) unstable; urgency=low
+
+  * corrected debian/lxdm.templates
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Thu, 31 Jul 2014 21:30:42 +0200
+
+lxdm (0.5.0-0vkmk1) unstable; urgency=low
+
+  * new upstream release
+  * adjusted watchfile and control-file for download-address
+  * adjusted debian/lxdm.postinst for debian-systemd
+  * added debian/lxdm.service
+  * adjusted debian/rules-file for systemd
+  * deleted all files in debian/po
+  * adjusted debian/lxdm.pam
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Thu, 31 Jul 2014 19:16:42 +0200
+
+lxdm (0.4.1+git.r176.g478bcc4-0vkmk1) unstable; urgency=low
+
+  * this is a non released git-Version with some improvements
+  * disabled debian/patches/15-path-replace.patch:
+    Problem seemed to be solved upstream differently
+  * disabled debian/patches/22_ubuntu-i18n_oneiric.patch:
+    Problem seemed to be solved upstream differently
+  * added debian/patches/23_debian-config.patch
+  * adjusted rules-file to get dh_autoconfigure work
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Sun, 16 Feb 2014 19:05:42 +0100
+
+lxdm (0.4.1+git20121119-0vkmk1) unstable; urgency=low
+
+  * this is a non released git-Version with some improvements
+  * disabled debian/patches/25_login_name.patch:
+    Problem seemed to be solved upstream
+  * disabled 90_fix_event_check.patch: applied upstream
+  * disabled 21_fix_greeter_location.patch: Problem seemed to be 
+    solved upstream
+  * adjusted rules-file to get dh_autoconfigure work
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Mon, 14 Jan 2013 21:25:42 +0100
+
+lxdm (0.4.1-0vkmk4) unstable; urgency=low
+
+  * added debian/patches/25_login_name.patch:
+    from Zdenek Prikryl <iprikryl@fit.vutbr.cz> to correct the user list, 
+    so only a name and login of user is displayed without commas and other 
+    information.
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Fri, 1 Apr 2012 11:25:42 +0200
+
+lxdm (0.4.1-0ubuntu6) precise; urgency=low
+
+  * debian/patches/20_disable_resize_grip.patch:
+    - drop that patch to disable resize grip, that was needed because of 
+      Ubuntu had a backport of a gtk3 feature but it has been decided to
+      drop that distro specific change before the lts (lp: #944275)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 01 Mar 2012 20:41:01 +0100
+
+lxdm (0.4.1-0ubuntu5) precise; urgency=low
+
+  * debian/patches/90_fix_event_check.patch:
+   - From upstream, fix event check which causes 100% CPU activity.
+     LP: #901407
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 01 Jan 2012 17:17:02 +0100
+
+lxdm (0.4.1-0vkmk2) unstable; urgency=low
+
+  * disabled 20_disable_resize_grip.patch, because package doesn't 
+    compile with it
+  * moving lxdm.upstart out of the way by renaming it, to get no 
+    dependencies to upstart
+  * modified lxdm.init-script to get console-kit and dbus running
+
+ -- Klaumi Klingsporn <klaumikli@gmx.de>  Fri, 11 Nov 2011 12:25:42 +0100
+
+lxdm (0.4.1-0ubuntu4) oneiric; urgency=low
+
+  * debian/lxdm.upstart: Update start on, with current upstart events. 
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 07 Oct 2011 00:58:42 +0200
+
+lxdm (0.4.1-0ubuntu3) oneiric; urgency=low
+
+  [ Gunnar Hjalmarsson ]
+  * debian/patches/22_ubuntu_i18n_oneiric.patch:
+    - Source /etc/profile and ~/.profile (LP: #857326).
+    - If the session language is set from the greeter, override
+      language related variables that are set by sourcing ~/.profile.
+    - Possible "Language" value in ~/.dmrc not applicable in Oneiric,
+      so do not use it (LP: #843380).
+  * debian/lxdm.upstart:
+    - Export LC_MESSAGES to ensure correct display language on the
+      login screen (LP: #857326).
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 30 Sep 2011 23:09:43 +0200
+
+lxdm (0.4.1-0ubuntu2) oneiric; urgency=low
+
+  * debian/lxdm.upstart: when lxdm is shut down by a runlevel call, emit an
+    upstart event that can be caught by plymouth so it can distinguish
+    between the DM shutting down for a runlevel change vs. other causes.
+    Thanks Steve Langasek for the fix. LP: #854329.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 25 Sep 2011 02:28:53 +0200
+
+lxdm (0.4.1-0ubuntu1) oneiric; urgency=low
+
+  * New upstream bugfix release.
+  * debian/patches:
+   - 21_fix_greeter_location.patch: Fix location of the greeter in the
+     configuration file. (LP: #823621)
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 19 Aug 2011 14:38:55 +0200
+
+lxdm (0.4.0-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release.
+   - Add a configuration GUI (LP: #518415)
+   - Add an option to not put X11 auth file in $HOME (LP: #558765)
+   - Parse ~/.xprofile (LP: #591031)
+  * debian/patches:
+   - 15-path-replace.patch: Refreshed.
+   - 16_gtk3_migration.patch: Remove, merged upstream.
+   - 20_disable_resize_grip.patch: Update to always apply since GTK2 has
+     resize grip on Ubuntu.
+   - 80_translations.patch: Remove, merged upstream.
+   - 90_simple_expose.patch: Remove, upstream rewrote this code.
+   - lxdm.conf_greeter_path_fix.patch: Remove, fixed upstream.
+  * debian/rules:
+   - Remove additional CFLAGS for GTK3 migration.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 24 Jul 2011 19:03:21 +0200
+
+lxdm (0.3.0-0ubuntu5) natty; urgency=low
+
+  * debian/patches/90_simple_expose.patch
+   - From upstream, rework the expose-event callback which have a high CPU
+     usage (LP: #733912)
+  * debian/patches/20_disable_resize_grip.patch
+   - Disable resize grip which break the background drawing (LP: #703658)
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 20 Mar 2011 00:31:24 +0100
+
+lxdm (0.3.0-0ubuntu4) natty; urgency=low
+
+  * debian/lxdm.1: Fix wording in section FILES (initial patch by
+    Andrey Bondarenko) (LP: #733169)
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Mon, 14 Mar 2011 16:33:22 +0100
+
+lxdm (0.3.0-0ubuntu3) natty; urgency=low
+
+  * debian/patches/
+   - 80_translations.patch: Update translations from upstream git (2011-02-14)
+  * debian/lxdm.pam:
+   - Add @include common-session-noninteractive instead of
+     @include common-session to disable consolekit pam support, already in lxdm
+     (LP: #576073).
+  * debian/control:
+   - Drop libpam-ck-connector conflicts, since the support is disabled in the
+     pam file (LP: #709531).
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Mon, 28 Feb 2011 00:17:20 +0100
+
+lxdm (0.3.0-0ubuntu2) natty; urgency=low
+
+  * debian/control:
+   - Add conflicts on libpam-ck-connector to workaround bug #576073.
+  * debian/16_gtk3_migration.patch:
+   - Refresh with new depreciations.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sat, 15 Jan 2011 14:56:45 +0100
+
+lxdm (0.3.0-0ubuntu1) natty; urgency=low
+
+  * Merge with Debian git.
+  * Ubuntu remaining changes:
+   - debian/rules: 
+    + Pass --libexecdir=/usr/lib/lxdm to keep the same location for the greeter
+    + Add CFLAGS for GTK3 migration.
+    + Add LDFLAGS for building with --as-needed
+   - debian/patches/lxdm.conf_greeter_path_fix.patch: 
+    + Use /usr/lib/lxdm prefix to keep the same location for the greeter.
+   - debian/patches/16_gtk3_migration.patch:
+    + Build with CFLAGS for GTK3 migration.
+   - debian/lxdm.postinst:
+    + Remove alternatives file if it's not a symlink (LP: #616188).
+   - debian/lxdm.prerm
+    + Don't remove alternative on upgrade.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 05 Nov 2010 00:44:42 +0100
+
+lxdm (0.3.0-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+   - Fix login with spaces (LP: #621818)
+  * debian/patches:
+   - 10-selinux-fix.patch
+   - 11-env-fix-1.patch
+   - 12-env-fix-2.patch
+   - 19-mode-debug.patch
+   - 20-fix-xauthority.patch
+   Merged upstream.
+   - 15-path-replace.patch: Refresh.
+   - 17-follow-symlink.patch: Drop, not needed with the new version.
+   - 99-autoreconf.patch: Drop, not needed.
+  * debian/control:
+   - Build-depends on libpam0g-dev to build with PAM support. (LP: #635698)
+   - Build-depends on libglib2.0-dev.
+   - Build-depends on libx11-dev for xconn.
+  * debian/copyright:
+   - Update with new files.
+  * debian/links
+   - Link new binaries with the current manpage.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Mon, 25 Oct 2010 16:38:40 -0400
+
+lxdm (0.2.0-0ubuntu3) maverick; urgency=low
+
+  * debian/lxdm.postinst:
+    - Only try to remove the alternative if the file actually exists.
+
+ -- Martin-Éric Racine <q-funk@ubuntu.com>  Sun, 03 Oct 2010 23:08:39 +0300
+
+lxdm (0.2.0-0ubuntu2) maverick; urgency=low
+
+  * debian/lxdm.prerm:
+   - Don't remove alternative on upgrade.
+  * debian/lxdm.postinst:
+   - Remove alternatives file if it's not a symlink (LP: #616188).
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 03 Oct 2010 16:16:36 +0200
+
+lxdm (0.2.0-0ubuntu1) maverick; urgency=low
+
+  * Sync with Debian git.
+  * Ubuntu remaining changes:
+   - debian/rules: 
+    + Pass --libexecdir=/usr/lib/lxdm to keep the same location for the greeter
+   - debian/changelog:
+    + Merge last changelog entry.
+  * Ubuntu changes dropped:
+   - debian/patches:
+    + 11-use-desktop-session.patch: dropped, not needed.
+    + 17-last-session.patch: fixed upstream.
+    + 20-stderr_stdout_to_log.patch: removed, same patch that
+      stderr_stdout_to_log.patch
+
+  [ Andrew Lee (李健秋) ]
+  * debian/control:
+   - Updated Vcs-Svn and Vcs-Browser tags.
+  * debian/patches/lxdm.conf_greeter_path_fix.patch & debian/rules:
+   - Append libexec to the path so that it's clear to know it's libexec.
+  * debian/lxdm.init:
+   - Read locale settings
+
+  [ Julien Lavergne ]
+  * Use /etc/lxdm/default.conf for configuration file, and symlink to the real
+    file using update-alternative.
+   - debian/rules: Pass /etc/lxdm/default.conf to set it as config file.
+   - debian/lxdm.{postinst,prerm}: Register /etc/lxdm/lxdm.conf for lxdm.conf.
+   - debian/lxdm.1: Update man pages.
+  * debian/control:
+   - Bump build-depends for libgtk2.0-dev to >= 2.12
+   - Depends on debconf (>= 1.2.9) | debconf-2.0 instead of only debconf.
+   - Depends on x11-utils | xbase-clients | xmessage instead of only x11-utils.
+   - Bump depends for lsb-base to (>= 3.0-6).
+   - Replace depends on libpam0g by libpam-modules.
+   - Bump depends for libpam-runtime to (>= 0.76-14).
+   - Provide x-display-manager.
+  * debian/rules:
+   - Add LDFLAGS = -Wl,-z,defs -Wl,-O2 -Wl,--as-needed
+   - Add --enable-debug to configure.
+  * debian/patches/
+   - 10-selinux-fix.patch: From upstream, various fixes, including SElinux
+     support.
+   - 11-env-fix-1.patch & 12-env-fix-2.patch: From upstream, fix various
+     environnement settings.
+   - 15-path-replace.patch : don't let lxdm replace PATH. (LP: #524761)
+   - 17-follow-symlink.patch: Follow symlink instead of saving the
+     configuration file on a symlink.
+   - 19-mode-debug.patch: From upstream, add a debug mode.
+   - 20-fix-xauthority.patch: From upstream, fix xauthority export.
+   - 99-autoreconf.patch: Refresh configure.
+  * debian/lxdm.upstart: Add upstart script.
+  * debain/po: Add po files from xdm package.
+  * debian/copyright:
+   - Update copyright with debian/po files.
+  * debian/lxdm.insserv & debian/rules: 
+   - Add virtual facility x-display-manager for insserv.
+  * debian/lxdm.pam
+   - Add.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sat, 22 May 2010 18:40:10 +0200
+
+lxdm (0.2.0-2) unstable; urgency=low
+
+  * added testing for /etc/default/locale
+  * modified LANG handling
+
+ -- Dinko Sabo <cobrasbyte@gmx.de>  Sat, 22 May 2010 14:51:04 +0200
+
+lxdm (0.2.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Updated paths in maintainer scripts
+  * Add patch to change greeter path in lxdm.conf
+  * Update debian/copyright
+  * Add new dependencies to control 
+  * Add autoconfigure override in rules to set correct paths for libs
+    config files
+  * Disable stderr_stdout_to_log.patch for now 
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Sun, 02 May 2010 17:51:28 +0200
+
+lxdm (0.2.0~svn2307+git20100408-0ubuntu1) lucid; urgency=low
+
+  * New upstream snapshot (735dbe5727f)
+   - Fix PAM support (LP: #550551)
+   - Fix use of encrypted partition (LP: #554583)
+  * debian/patches:
+   - 11-use-desktop-session.patch: Refresh to only add startlubuntu for Lubuntu
+     session.
+   - 15-path-replace.patch: Refresh.
+   - 17-last-session.patch: restore last session behavior (LP: #561377)
+   - 20-stderr_stdout_to_log.patch: Refresh.
+  * Update PAM file with current gdm one.
+  * debian/lxdm.1 & debian/manpages: Add a man page based the one from Sidux
+    (LP: #516703)
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Tue, 13 Apr 2010 01:25:35 +0200
+
+lxdm (0.2.0~svn2307+git20100209-0ubuntu2) lucid; urgency=low
+
+  * debian/patches/15-path-replace.patch : From upstream, don't let lxdm
+    replace PATH (LP: #524761).
+  * debian/lxdm.upstart: export PATH from /etc/environment.
+  * debian/patches/20-stderr_stdout_to_log.patch: From Sidux, redirect stderr
+    and stdout to the log file.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Wed, 24 Feb 2010 23:51:29 +0100
+
+lxdm (0.2.0~svn2307+git20100209-0ubuntu1) lucid; urgency=low
+
+  * New upstream snapshot, from git (40c1561c8d).
+  * debian/rules
+   - Pass config file with CFLAGS to /etc/lxdm/default.list. This location will
+     be updated by update-alternative to handle multiple configuration files.
+   - Pass --libexecdir=/usr/lib/lxdm configure flag.
+  * debian/patches/
+   - 14-lubuntu-config-file.patch: Removed, handle by update-alternative.
+   - 13-plymouth-support.patch: Removed, merged upstream.
+   - 12-replace-libexec.patch: removed, handle by --libexecdir=/usr/lib/lxdm
+  * debian/control
+   - Add depends on librsvg2-common, the theme use SVG image.
+  * debian/lxdm.postinst & debian/prerm
+   - Use update-alternate to configure default configuration file.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 31 Jan 2010 23:35:02 +0100
+
+lxdm (0.2.0~svn2307-0ubuntu1) lucid; urgency=low
+
+  * New upstream snapshot.
+  * Update location of lxdm and lxdm-binary to /usr/sbin
+  * debian/patches/
+   - 11-use-desktop-session.patch: Refreshed.
+   - 12-replace-libexec: Replaced hardcoded libexec.
+   - 13-plymouth-support.patch: Adapt plymouth support.
+   - 14-lubuntu-config-file.patch: Use lubuntu config file if it's available.
+  * debian/control:
+   - Depend gtk2-engines-pixbuf for theme support.
+   - Depend on libpam-runtime (>= 0.76-14) and libpam-modules for pam modules
+     support (LP: #512599).
+   - Don't conflict with plymouth, support was fixed.
+  * debian/lxdm.upstart: Adapt to start on tty1.
+  * Remove README.Debian mentionning plymouth conflict.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 29 Jan 2010 18:49:25 +0100
+
+lxdm (0.1.0-6) unstable; urgency=low
+
+  * Add man page 
+  * Add debian/watch file 
+  * Add debian/links 
+  * Add debian/lxdm.logrotate 
+  * Update debian/copyright to include manpage author 
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Thu, 01 Apr 2010 06:27:11 +0200
+
+lxdm (0.1.0-5) unstable; urgency=low
+
+  * Correct Vcs-* lines
+  * Improve long description
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Tue, 30 Mar 2010 22:07:51 +0200
+
+lxdm (0.1.0-4) unstable; urgency=low
+
+  * Add --no-start override for init script 
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Thu, 18 Mar 2010 17:20:59 +0100
+
+lxdm (0.1.0-3) unstable; urgency=low
+
+  * Added stderr_stdout_tot_log.patch
+  * Minor fix to postinst
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Fri, 12 Feb 2010 10:57:28 +0100
+
+lxdm (0.1.0-2) unstable; urgency=low
+
+  * Fixing issues with postinst/prerm/config 
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Fri, 12 Feb 2010 01:53:43 +0100
+
+lxdm (0.1.0-1) unstable; urgency=low
+
+  [ Nikolas Poniros ]
+  * Initial release (closes: #560004)  
+
+ -- Nikolas Poniros <edhunter@sidux.com>  Tue, 09 Feb 2010 19:06:13 +0100
+
+lxdm (0.1.0-0ubuntu1) lucid; urgency=low
+
+  * Intial release (LP: #495947)
+  * debian/patches/11-use-desktop-session.patch: Detect DESKTOP_SESSION 
+    environnement variable instead of DESKTOP.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Thu, 21 Jan 2010 00:37:45 +0100

@@ -1,0 +1,125 @@
+# Croatian translation to lxde.lxdm.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxde.lxdm package.
+# Ivica Kolić <ikoli@yahoo.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxde.lxdm\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2012-10-17 00:09+0200\n"
+"Last-Translator: zvacet <ikoli@yahoo.com>\n"
+"Language-Team: Croatian (hr) <>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Korisnik:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Radna površina:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Jezik:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Tipkovnica:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "lxdm config"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Automatska prijava"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Pozadina"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Zadano"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Omogući donju ploču"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Opcije donje ploče"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Prozirna ploča"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Sakrij sesije"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Pokaži izbornik jezika"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Pokaži raspored tipkovnice"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Sakrij dugme isključivanja"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Ostale opcije"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Pokaži listu korisnika"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Sakrij vrijeme"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Neodređeno"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Lozinka:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Ponovo pokreni"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Isključi"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>prijavljen</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Više ..."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Pregledaj za više slika..."
