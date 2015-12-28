@@ -12,6 +12,7 @@ lxdm_binary_CFLAGS = \
 	$(CONSOLEKIT_CFLAGS) \
 	-Werror-implicit-function-declaration \
 	-Wall \
+	-rdynamic \
 	$(NULL)
 
 lxdm_binary_LDADD = \

@@ -16,6 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Pootle-Path: /ko/lxdm/po/ko.po\n"
+"X-Pootle-Revision: 0\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935

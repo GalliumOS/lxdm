@@ -183,7 +183,6 @@ static GString *lxcom_func(gpointer data,int uid,int pid,int argc,char **argv)
 	GSList *p,*n;
 	GString *res=NULL;
 	assert(argc>0 && argv!=NULL);
-
 	do{
 	if(!strcmp(argv[0],"SIGNAL"))
 	{
@@ -193,16 +192,18 @@ static GString *lxcom_func(gpointer data,int uid,int pid,int argc,char **argv)
 			int sig=atoi(argv[1]);
 			if(sig==SIGCHLD)
 			{
-				for(p=child_watch_list;p!=NULL;p=n)
+				CHECK_SIGCHLD:
+				for(p=child_watch_list;p!=NULL;p=p->next)
 				{
 					ChildWatch *item=p->data;
 					int status;
-					n=p->next;
 					if(waitpid(item->pid,&status,WNOHANG)>0)
 					{
 						child_watch_list=g_slist_delete_link(child_watch_list,p);
+						// item->func may change the child_watch_list
 						item->func(item->data,item->pid,status);
 						g_free(item);
+						goto CHECK_SIGCHLD;
 					}
 				}
 			}
@@ -438,7 +439,7 @@ gboolean lxcom_send(const char *sock,const char *buf,char **res)
 int lxcom_add_child_watch(int pid,void (*func)(void*,int,int),void *data)
 {
 	ChildWatch *item;
-	if(pid<0 || !func)
+	if(pid<=0 || !func)
 		return -1;
 	item=g_new(ChildWatch,1);
 	item->func=func;

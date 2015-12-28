@@ -2,21 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:52+0100\n"
-"PO-Revision-Date: 2012-04-08 12:43+0200\n"
-"Last-Translator: George <forfolias@gmail.com>\n"
+"PO-Revision-Date: 2014-11-01 23:27+0000\n"
+"Last-Translator: armakolas <armakolas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.5\n"
+"X-Generator: Pootle 2.6.0-rc2\n"
+"X-POOTLE-MTIME: 1414884454.000000\n"
+"X-Pootle-Path: /el/lxdm/po/el.po\n"
+"X-Pootle-Revision: 0\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
@@ -25,7 +27,7 @@ msgstr "Χρήστης:"
 
 #: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
 msgid "Desktop:"
-msgstr "Συνεδρία:"
+msgstr "Επιφάνεια Εργασίας:"
 
 #: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
 msgid "Language:"
@@ -37,15 +39,15 @@ msgstr "Πληκτρολόγιο:"
 
 #: ../data/config.ui.h:1
 msgid "lxdm config"
-msgstr "ρυθμίσεις lxde"
+msgstr "ρυθμίσεις lxdm"
 
 #: ../data/config.ui.h:2
 msgid "Automatic Login"
-msgstr "Αυτόματη σύνδεση"
+msgstr "Αυτόματη Σύνδεση"
 
 #: ../data/config.ui.h:3
 msgid "Background"
-msgstr "Ταπετσαρία"
+msgstr "Παρασκήνιο"
 
 #: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
 msgid "Default"
@@ -53,23 +55,23 @@ msgstr "Προεπιλογή"
 
 #: ../data/config.ui.h:5
 msgid "Enable bottom panel"
-msgstr ""
+msgstr "Ενεργοποίηση κάτω γραμμής"
 
 #: ../data/config.ui.h:6
 msgid "Bottom Panel Options"
-msgstr ""
+msgstr "Επιλογές Κάτω Γραμμής"
 
 #: ../data/config.ui.h:7
 msgid "Transparent panel"
-msgstr ""
+msgstr "Διάφανη γραμμή"
 
 #: ../data/config.ui.h:8
 msgid "Hide sessions"
-msgstr ""
+msgstr "Απόκρυψη συνεδριών"
 
 #: ../data/config.ui.h:9
 msgid "Show languages menu"
-msgstr "Εμφάνιση μενού γλωσσών"
+msgstr "Εμφάνιση καταλόγου γλωσσών"
 
 #: ../data/config.ui.h:10
 msgid "Show keyboard layouts"
@@ -77,11 +79,11 @@ msgstr "Εμφάνιση διατάξεων πληκτρολογίου"
 
 #: ../data/config.ui.h:11
 msgid "Hide quit button"
-msgstr ""
+msgstr "Απόκρυψη πλήκτρου εξόδου"
 
 #: ../data/config.ui.h:12
 msgid "Other Options"
-msgstr ""
+msgstr "Λοιπές Επιλογές"
 
 #: ../data/config.ui.h:13
 msgid "Show user list"
@@ -89,7 +91,7 @@ msgstr "Εμφάνιση λίστας χρηστών"
 
 #: ../data/config.ui.h:14
 msgid "Hide time"
-msgstr ""
+msgstr "Απόκρυψη ώρας"
 
 #: ../src/gdm/gdm-languages.c:614
 msgid "Unspecified"
@@ -101,11 +103,11 @@ msgstr "Κωδικός:"
 
 #: ../src/greeter.c:726
 msgid "_Reboot"
-msgstr "_Επανεκκίνηση"
+msgstr "Επανεκκίνηση"
 
 #: ../src/greeter.c:730
 msgid "_Shutdown"
-msgstr "_Τερματισμός"
+msgstr "Τερματισμός"
 
 #: ../src/greeter.c:1041
 msgid ""

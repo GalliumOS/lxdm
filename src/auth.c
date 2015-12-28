@@ -179,7 +179,7 @@ int lxdm_auth_session_run(LXDM_AUTH *a,const char *session_exec,char **env)
 	pid = fork();
 	if(pid==0)
 	{
-		env=lxdm_auth_append_env(a,env);
+		//env=lxdm_auth_append_env(a,env);
 		lxdm_auth_clean_for_child(a);
 		switch_user(&a->pw, session_exec, env);
 		lxdm_quit_self(4);
@@ -388,7 +388,7 @@ int lxdm_auth_session_run(LXDM_AUTH *a,const char *session_exec,char **env)
 	pid = fork();
 	if(pid==0)
 	{
-		env=lxdm_auth_append_env(a,env);
+		//env=lxdm_auth_append_env(a,env);
 		lxdm_auth_clean_for_child(a);
 		switch_user(&a->pw, session_exec, env);
 		lxdm_quit_self(4);

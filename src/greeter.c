@@ -191,18 +191,19 @@ static void on_entry_activate(GtkEntry* entry)
 	if( !user )
 	{
 		user = g_strdup( gtk_entry_get_text( GTK_ENTRY(entry) ) );
-		
-#if 0
-		gtk_entry_set_text(GTK_ENTRY(entry), "");
-		gtk_label_set_text( GTK_LABEL(prompt), _("Password:") );
+		if(strlen(user)==0)
+		{
+			g_free(user);
+			user=NULL;
+			return;
+		}
 		if(strchr(user, ' '))
 		{
+			gtk_entry_set_text(GTK_ENTRY(entry), "");
 			g_free(user);
 			user = NULL;
 			return;
 		}
-		gtk_entry_set_visibility(entry, FALSE);
-#endif
 		if(g_key_file_get_integer(config,"base","skip_password",NULL)!=0)
 		{
 			gtk_label_set_text( GTK_LABEL(prompt), "");

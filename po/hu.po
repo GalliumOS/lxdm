@@ -9,15 +9,18 @@ msgstr ""
 "Project-Id-Version: lxdm\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:52+0100\n"
-"PO-Revision-Date: 2012-08-23 15:26+0200\n"
-"Last-Translator: Bendegúz <gyonkibendeguz@gmail.com>\n"
+"PO-Revision-Date: 2015-05-04 19:12+0000\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.5\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-POOTLE-MTIME: 1430766754.000000\n"
+"X-Pootle-Path: /hu/lxdm/po/hu.po\n"
+"X-Pootle-Revision: 1628\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
@@ -54,19 +57,19 @@ msgstr "Alapértelmezett"
 
 #: ../data/config.ui.h:5
 msgid "Enable bottom panel"
-msgstr ""
+msgstr "Alsó panel engedélyezése"
 
 #: ../data/config.ui.h:6
 msgid "Bottom Panel Options"
-msgstr ""
+msgstr "Alsó panel beállítások"
 
 #: ../data/config.ui.h:7
 msgid "Transparent panel"
-msgstr ""
+msgstr "Átlátszó panel"
 
 #: ../data/config.ui.h:8
 msgid "Hide sessions"
-msgstr ""
+msgstr "Munkamenetek elrejtése"
 
 #: ../data/config.ui.h:9
 msgid "Show languages menu"
@@ -78,11 +81,11 @@ msgstr "Billentyűzetkiosztás megjelenítése"
 
 #: ../data/config.ui.h:11
 msgid "Hide quit button"
-msgstr ""
+msgstr "Kilépés gomb elrejtése"
 
 #: ../data/config.ui.h:12
 msgid "Other Options"
-msgstr ""
+msgstr "Egyéb beállítások"
 
 #: ../data/config.ui.h:13
 msgid "Show user list"
@@ -90,7 +93,7 @@ msgstr "Felhasználólista megjelenítése"
 
 #: ../data/config.ui.h:14
 msgid "Hide time"
-msgstr ""
+msgstr "Idő elrejtése"
 
 #: ../src/gdm/gdm-languages.c:614
 msgid "Unspecified"
@@ -118,8 +121,8 @@ msgstr ""
 
 #: ../src/greeter.c:1055 ../src/lang.c:125
 msgid "More ..."
-msgstr "Egyéb..."
+msgstr "Több…"
 
 #: ../src/config.c:313
 msgid "Browse for more pictures..."
-msgstr "Egyéb képek tallózása..."
+msgstr "További képek tallózása…"

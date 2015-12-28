@@ -1,8 +1,8 @@
-lxdm (0.5.0-3-galliumos3) unstable; urgency=low
+lxdm (0.5.3-1-galliumos1) unstable; urgency=low
 
-  * Added GalliumOS theme
+  * Merged upstream changes
 
- -- Hugh Greenberg <hugh@galliumos.org>  Thu, 17 Dec 2015 21:34:36 +0200
+ -- Hugh Greenberg <hugh@galliumos.org>  Thu, 28 Dec 2015 21:34:36 +0200
 
 lxdm (0.5.0-3-galliumos2) unstable; urgency=low
 

@@ -77,7 +77,7 @@ static void draw_text(cairo_t *cr, double x, double y, char *text, GdkColor *col
 
 static void on_ui_expose(void)
 {
-	cairo_t *cr = gdk_cairo_create(win);
+	cairo_t *cr;
 	char *p = (stage == 0) ? user : pass;
 	int len = strlen(p);
 	GdkColor *color=&text;
@@ -85,6 +85,14 @@ static void on_ui_expose(void)
 	if(stage==2)
 	{
 		return;
+	}
+	
+	cr=gdk_cairo_create(win);
+	cairo_pattern_t *pattern=gdk_window_get_background_pattern(win);
+	if(pattern)
+	{
+		cairo_set_source(cr,pattern);
+		cairo_paint(cr);
 	}
 
 	gdk_cairo_set_source_color(cr, &bg);

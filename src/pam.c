@@ -42,6 +42,7 @@
 #include <errno.h>
 #include <poll.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
 #include <pwd.h>
 #include <grp.h>
@@ -300,10 +301,70 @@ int lxdm_auth_session_begin(LXDM_AUTH *a,const char *name,int tty,int display,ch
 	}
 	err = pam_open_session(a->handle, 0); /* FIXME pam session failed */
 	if( err != PAM_SUCCESS )
+	{
 		g_warning( "pam open session error \"%s\"\n", pam_strerror(a->handle, err));
+	}
 	else
+	{
 		a->in_session=1;
+	}
 	return 0;
+}
+
+static int proc_filter(const struct dirent *d)
+{
+    int c=d->d_name[0];
+    return c>='1' && c<='9';
+}
+
+static int check_process_sid(int pid,const char *sid)
+{
+	char path[128];
+	FILE *fp;
+	gchar *env_data,*p;
+	gsize env_len;
+	int res=0;
+
+	sprintf(path,"/proc/%d/environ",pid);
+	if(!g_file_get_contents(path,&env_data,&env_len,NULL))
+	{
+		return 0;
+	}
+	for(p=env_data;p!=NULL && p-env_data<env_len;)
+	{
+		if(!strncmp(p,"XDG_SESSION_ID=",15))
+		{
+			if(!strcmp(sid,p+15))
+				res=1;
+			break;
+		}
+		p=strchr(p,'\0');
+		if(!p) break;p++;
+	}
+	g_free(env_data);
+
+	return res;
+}
+
+static void kill_left_process(const char *sid)
+{
+	int self=getpid();
+	struct dirent **list;
+	int i,n;
+
+	n=scandir("/proc",&list,proc_filter,0);
+	if(n<0) return;
+	for(i=0;i<n;i++)
+	{
+		int pid=atoi(list[i]->d_name);
+		if(pid==self || pid<=1)
+			continue;
+		if(check_process_sid(pid,sid))
+		{
+			kill(pid,SIGKILL);
+		}
+	}
+	free(list);
 }
 
 int lxdm_auth_session_end(LXDM_AUTH *a)
@@ -313,8 +374,20 @@ int lxdm_auth_session_end(LXDM_AUTH *a)
 		return 0;
 	if(a->in_session)
 	{
+		char xdg_session_id[32]={0};
+		const char *p=pam_getenv(a->handle,"XDG_SESSION_ID");
+		if(p!=NULL) snprintf(xdg_session_id,32,"%s",p);
 		err = pam_close_session(a->handle, 0);
+		if( err != PAM_SUCCESS )
+		{
+			g_warning( "pam close session error \"%s\"\n", pam_strerror(a->handle, err));
+		}
 		a->in_session=0;
+		if(p!=NULL)
+		{
+			usleep(100*1000);
+			kill_left_process(xdg_session_id);
+		}
 	}
 	pam_end(a->handle, err);
 	a->handle = NULL;	
@@ -400,8 +473,10 @@ void switch_user(struct passwd *pw, const char *run, char **env)
 	g_spawn_command_line_sync ("/etc/lxdm/PreLogin",NULL,NULL,NULL,NULL);
 
 	if( !pw || initgroups(pw->pw_name, pw->pw_gid) ||
-			setgid(pw->pw_gid) || setuid(pw->pw_uid)/* || setsid() == -1 */)
+			setgid(pw->pw_gid) || setuid(pw->pw_uid) || setsid()==-1)
+	{
 		exit(EXIT_FAILURE);
+	}
 	chdir(pw->pw_dir);
 	fd=open(".xsession-errors",O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
 	if(fd!=-1)
@@ -426,7 +501,6 @@ void switch_user(struct passwd *pw, const char *run, char **env)
 
 void run_session(LXDM_AUTH *a,const char *run)
 {
-	setsid();
 	a->child=fork();
 	if(a->child==0)
 	{
@@ -505,7 +579,7 @@ int main(int arc,char *arg[])
 
 	setvbuf(stdout, NULL, _IOLBF, 0 );
 	signal(SIGCHLD,sig_handler);
-	
+
 	lxdm_auth_init(&a);
 	while(file_get_line(cmd,sizeof(cmd),stdin)>=0)
 	{

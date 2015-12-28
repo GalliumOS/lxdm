@@ -9,19 +9,8 @@ else
 	LXSESSION=/usr/bin/startlxde
 fi
 
-[ -f /etc/profile ] && . /etc/profile
-[ -f ~/.profile ] && . ~/.profile
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
-
-# override ~/.profile if language was set on the greeter
-if [ -n "$GREETER_LANGUAGE" ]; then
-	language_list=${GREETER_LANGUAGE%.*}${GREETER_LANGUAGE#*.UTF-8}:en
-	export LANGUAGE="$language_list"
-	export LC_MESSAGES="$GREETER_LANGUAGE"
-	export LC_CTYPE="$GREETER_LANGUAGE"
-	export LC_COLLATE="$GREETER_LANGUAGE"
-fi
 
 if [ -f /etc/X11/xinit/xinitrc-common ]; then
 # fedora

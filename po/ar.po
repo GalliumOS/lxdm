@@ -1,20 +1,25 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Tareq Al Jurf <taljurf@fedoraproject.org>, 2010.
-#
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: lxde.lxdm\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:52+0100\n"
-"PO-Revision-Date: 2010-04-14 18:15+0300\n"
-"Last-Translator: Tareq Al Jurf <taljurf@fedoraproject.org>\n"
-"Language-Team: Arabic <trans-ar@lists.fedoraproject.org>\n"
+"PO-Revision-Date: 2015-04-10 15:49+0000\n"
+"Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-POOTLE-MTIME: 1428680981.000000\n"
+"X-Pootle-Path: /ar/lxdm/po/ar.po\n"
+"X-Pootle-Revision: 590\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
@@ -31,7 +36,7 @@ msgstr "اللغة:"
 
 #: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
 msgid "Keyboard:"
-msgstr "تخطيط لوحة المفاتيح:"
+msgstr "لوحة المفاتيح:"
 
 #: ../data/config.ui.h:1
 msgid "lxdm config"
@@ -39,59 +44,59 @@ msgstr "ضبط lxdm"
 
 #: ../data/config.ui.h:2
 msgid "Automatic Login"
-msgstr "ولوج تلقائي"
+msgstr "ولوج آليّ"
 
 #: ../data/config.ui.h:3
 msgid "Background"
-msgstr "الخلفية"
+msgstr "الخلفيّة"
 
 #: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
 msgid "Default"
-msgstr "افتراضي"
+msgstr "الافتراضيّة"
 
 #: ../data/config.ui.h:5
 msgid "Enable bottom panel"
-msgstr ""
+msgstr "مكّن اللوحة السّفليّة"
 
 #: ../data/config.ui.h:6
 msgid "Bottom Panel Options"
-msgstr ""
+msgstr "خيارات اللوحة السّفليّة"
 
 #: ../data/config.ui.h:7
 msgid "Transparent panel"
-msgstr ""
+msgstr "لوحة شفّافة"
 
 #: ../data/config.ui.h:8
 msgid "Hide sessions"
-msgstr ""
+msgstr "أخفِ الجلسات"
 
 #: ../data/config.ui.h:9
 msgid "Show languages menu"
-msgstr "عرض قائمة اللغات"
+msgstr "أظهر قائمة اللغات"
 
 #: ../data/config.ui.h:10
 msgid "Show keyboard layouts"
-msgstr "إظهار تخطيط لوحة مفاتيح"
+msgstr "أظهر تخطيطات لوحة المفاتيح"
 
 #: ../data/config.ui.h:11
 msgid "Hide quit button"
-msgstr ""
+msgstr "أخفِ زرّ الإنهاء"
 
 #: ../data/config.ui.h:12
 msgid "Other Options"
-msgstr ""
+msgstr "خيارات أخرى"
 
 #: ../data/config.ui.h:13
 msgid "Show user list"
-msgstr "عرض قائمة المستخدمين"
+msgstr "أظهر قائمة المستخدمين"
 
 #: ../data/config.ui.h:14
 msgid "Hide time"
-msgstr ""
+msgstr "أخفِ الوقت"
 
 #: ../src/gdm/gdm-languages.c:614
 msgid "Unspecified"
-msgstr "غير محدد"
+msgstr "غير محدّد"
 
 #: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
 msgid "Password:"
@@ -99,11 +104,11 @@ msgstr "كلمة المرور:"
 
 #: ../src/greeter.c:726
 msgid "_Reboot"
-msgstr "إ_عادة التشغيل"
+msgstr "أ_عد الإقلاع"
 
 #: ../src/greeter.c:730
 msgid "_Shutdown"
-msgstr "_إيقاف التشغيل"
+msgstr "أ_طفئ"
 
 #: ../src/greeter.c:1041
 msgid ""
@@ -111,12 +116,12 @@ msgid ""
 "<i>logged in</i>"
 msgstr ""
 "\n"
-"<i>سجل الدخول في</i>"
+"<i>والج في</i>"
 
 #: ../src/greeter.c:1055 ../src/lang.c:125
 msgid "More ..."
-msgstr "المزيد..."
+msgstr "أكثر..."
 
 #: ../src/config.c:313
 msgid "Browse for more pictures..."
-msgstr "تصفح المزيد من الصور..."
+msgstr "تصفّح صورًا أكثر..."

@@ -19,6 +19,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 "X-Poedit-Language: Persian\n"
 "X-Poedit-Country: Iran\n"
+"X-Pootle-Path: /fa/lxdm/po/fa.po\n"
+"X-Pootle-Revision: 0\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935

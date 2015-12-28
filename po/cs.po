@@ -16,6 +16,8 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Pootle-Path: /cs/lxdm/po/cs.po\n"
+"X-Pootle-Revision: 0\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935

@@ -172,7 +172,7 @@ void xconn_close(xconn_t c)
 	free(c);
 }
 
-#if 0
+#if 1
 static xcb_window_t xconn_get_root(xconn_t c)
 {
 	const xcb_setup_t *setup;
@@ -181,11 +181,71 @@ static xcb_window_t xconn_get_root(xconn_t c)
 	xcb_screen_t *screen = iter.data;
 	return screen->root;
 }
+
+static char *xconn_atom_name(xcb_connection_t *c,xcb_atom_t atom)
+{
+	xcb_get_atom_name_cookie_t cookie;
+	xcb_get_atom_name_reply_t *reply;
+	char *buf;
+	int len;
+	char *res=NULL;
+	cookie=xcb_get_atom_name(c,atom);
+	reply=xcb_get_atom_name_reply(c,cookie,NULL);
+	if(!reply)
+		return NULL;
+	buf=xcb_get_atom_name_name(reply);
+	len=xcb_get_atom_name_name_length(reply);
+	if(buf && len>0)
+	{
+		res=malloc(len+1);
+		memcpy(res,buf,len);
+		res[len]=0;
+	}
+	free(reply);
+	return res;
+}
+
+static void xconn_clear_props(xcb_connection_t *c,xcb_window_t w)
+{
+	xcb_list_properties_cookie_t cookie;
+	xcb_list_properties_reply_t *reply;
+	xcb_atom_t *atoms;
+	int i,len;
+	xcb_atom_t temp[16];
+	int temp_len=0;
+	cookie=xcb_list_properties(c,w);
+	reply=xcb_list_properties_reply(c,cookie,NULL);
+	if(!reply)
+		return;
+	len=xcb_list_properties_atoms_length(reply);
+	atoms=xcb_list_properties_atoms(reply);
+	for(i=0;i<len;i++)
+	{
+		int prop=atoms[i];
+		//if(prop<=68)
+		//	continue;
+		char *name=xconn_atom_name(c,prop);
+		if(!name)
+			break;
+		if(!strcmp(name,"PULSE_SERVER") ||
+			!strcmp(name,"PULSE_COOKIE"))
+		{
+			temp[temp_len++]=prop;
+		}
+		free(name);
+	}
+	free(reply);
+	for(i=0;i<temp_len;i++)
+	{
+		xcb_delete_property_checked(c,w,temp[i]);
+	}
+}
+
 #endif
 
 void xconn_clean(xconn_t c)
 {
-#if 0
+#if 1
 	xcb_query_tree_cookie_t wintree;
 	xcb_query_tree_reply_t *rep;
 	xcb_window_t *children;
@@ -201,6 +261,7 @@ void xconn_clean(xconn_t c)
 	for(i=0;i<len;i++)
 		xcb_kill_client(c->c,children[i]);
 	free(rep);
+	xconn_clear_props(c->c,root);
 	xcb_flush(c->c);
 #endif
 }

@@ -3,7 +3,6 @@
 # Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Mark Trompell <mark@foresightlinux.org>, 2009.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: lxdm r2100\n"
@@ -19,6 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0\n"
 "X-POOTLE-MTIME: 1374751980.0\n"
+"X-Pootle-Path: /de/lxdm/po/de.po\n"
+"X-Pootle-Revision: 0\n"
 
 #: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
 #: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935

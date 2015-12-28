@@ -1,8 +1,3 @@
-FULL_LIBEXECDIR=$(libexecdir)
-
-lxdm.conf: lxdm.conf.in
-	cat lxdm.conf.in | sed 's,@FULL_LIBEXECDIR@,$(FULL_LIBEXECDIR),' > $@
-
 NULL=
 
 sbin_SCRIPTS = lxdm

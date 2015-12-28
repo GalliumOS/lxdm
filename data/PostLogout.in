@@ -1,13 +1,3 @@
 #!/bin/sh
 #
-# PostLogout is run as the logged-in user right after he has logged out.
-
-# Kills all your processes when you log out.
-# (Stolen von Arch-Linux)
-ps --user $USER | awk 'NR > 1 {print $1}' | xargs -t kill
-
-# Fix for pulseaudio (Stolen von Arch-Linux):
-test -x /usr/bin/pax11publish && /usr/bin/pax11publish -r
-
-# Sets the desktop background to solid black. Useful if you have multiple monitors.
-xsetroot -solid black
+# Note: this is a sample and will not be run as is.

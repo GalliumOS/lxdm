@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([lxdm], [0.5.0], [http://lxde.org/])
+AC_INIT([lxdm], [0.5.3], [http://lxde.org/])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects no-dist-gzip dist-xz])
 
 AC_CONFIG_SRCDIR([src/lxdm.c])
@@ -170,6 +170,36 @@ GETTEXT_PACKAGE=lxdm
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
 
+AC_DEFUN([AS_AC_EXPAND],[
+	EXP_VAR=[$1]
+	FROM_VAR=[$2]
+	dnl first expand prefix and exec_prefix if necessary
+	prefix_save=$prefix
+	exec_prefix_save=$exec_prefix
+	dnl if no prefix given, then use /usr/local, the default prefix
+	if test "x$prefix" = "xNONE"; then
+	prefix="$ac_default_prefix"
+	fi
+	dnl if no exec_prefix given, then use prefix
+	if test "x$exec_prefix" = "xNONE"; then
+	exec_prefix=$prefix
+	fi
+	full_var="$FROM_VAR"
+	dnl loop until it doesn not change anymore
+	while true; do
+	new_full_var="`eval echo $full_var`"
+	if test "x$new_full_var" = "x$full_var"; then break; fi
+	full_var=$new_full_var
+	done
+	dnl clean up
+	full_var=$new_full_var
+	AC_SUBST([$1], "$full_var")
+	dnl restore prefix and exec_prefix
+	prefix=$prefix_save
+	exec_prefix=$exec_prefix_save
+])
+AS_AC_EXPAND(FULL_LIBEXECDIR, $libexecdir)
+
 AC_CONFIG_FILES([
 	Makefile
 	lxdm.spec
@@ -184,6 +214,7 @@ AC_CONFIG_FILES([
 	data/PreReboot
 	data/PreShutdown
 	data/LoginReady
+	data/lxdm.conf
 ])
 AC_CONFIG_FILES([data/lxdm], [chmod +x data/lxdm])
 AC_OUTPUT

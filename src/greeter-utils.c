@@ -144,7 +144,7 @@ void ui_set_focus(GdkWindow *win)
     	if(attr.map_state == IsViewable) break;
     	usleep(10000);
 	}
-	XSetInputFocus(dpy,GDK_WINDOW_XID(win),RevertToNone,CurrentTime);
+	XSetInputFocus(dpy,GDK_WINDOW_XID(win),RevertToParent,CurrentTime);
 }
 
 void ui_add_cursor(void)

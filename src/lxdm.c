@@ -304,7 +304,7 @@ static LXSession *lxsession_add(void)
 
 static LXSession *lxsession_greeter(void)
 {
-	char temp[16];
+	char temp[128];
 	LXSession *s;
 	s=lxsession_find_greeter();
 	if(s)
@@ -327,10 +327,17 @@ static LXSession *lxsession_greeter(void)
 	s->idle=FALSE;
 	sprintf(temp,":%d",s->display);
 	setenv("DISPLAY",temp,1);
+	#ifndef DISABLE_XAUTH
+	sprintf(temp,"/var/run/lxdm/lxdm-:%d.auth",s->display);
+	setenv("XAUTHORITY",temp,1);
+	#endif
 	g_message("prepare greeter on %s\n",temp);
 	ui_prepare();
 	lxsession_set_active(s);
 	g_message("start greeter on %s\n",temp);
+	#ifndef DISABLE_XAUTH
+	unsetenv("XAUTHORITY");
+	#endif
 	return s;
 }
 
@@ -468,7 +475,7 @@ static char *lxsession_xserver_command(LXSession *s)
 		}
 	}
 
-	arg = g_renew(char *, arg, arc + 10);
+	arg = g_renew(char *, arg, arc + 15);
 	if(nr_tty)
 	{
 		arg[arc++] = g_strdup("-background");
@@ -486,6 +493,10 @@ static char *lxsession_xserver_command(LXSession *s)
 	{
 		arg[arc++] = g_strdup("-novtswitch");
 	}
+#ifndef DISABLE_XAUTH
+	arg[arc++] = g_strdup("-auth");
+	arg[arc++] = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
+#endif
 	arg[arc] = NULL;
 	p=g_strjoinv(" ", arg);
 	g_strfreev(arg);
@@ -659,7 +670,7 @@ static inline void xauth_write_string(int fd,const char *s)
 	write(fd,s,len);
 }
 
-static void xauth_write_file(const char *file,int dpy,char data[16])
+static int xauth_write_file(const char *file,int dpy,char data[16])
 {
 	int fd;
 	char addr[128];
@@ -669,7 +680,7 @@ static void xauth_write_file(const char *file,int dpy,char data[16])
 	gethostname(addr,sizeof(addr));
 	
 	fd=open(file,O_CREAT|O_TRUNC|O_WRONLY,0600);
-	if(!fd==-1) return;
+	if(fd==-1) return -1;
 	xauth_write_uint16(fd,256);		//FamilyLocalHost
 	xauth_write_string(fd,addr);
 	xauth_write_string(fd,buf);
@@ -677,6 +688,7 @@ static void xauth_write_file(const char *file,int dpy,char data[16])
 	xauth_write_uint16(fd,16);
 	write(fd,data,16);
 	close(fd);
+	return 0;
 }
 
 static void create_server_auth(LXSession *s)
@@ -684,6 +696,7 @@ static void create_server_auth(LXSession *s)
 	GRand *h;
 	int i;
 	char *authfile;
+	struct passwd *pw;
 
 	h = g_rand_new();
 	for( i = 0; i < 16; i++ )
@@ -694,9 +707,14 @@ static void create_server_auth(LXSession *s)
 
 	authfile = g_strdup_printf("/var/run/lxdm/lxdm-:%d.auth",s->display);
 
-	//setenv("XAUTHORITY",authfile,1);
+	setenv("XAUTHORITY",authfile,1);
 	remove(authfile);
 	xauth_write_file(authfile,s->display,s->mcookie);
+	pw=getpwnam("lxdm");endpwent();
+	if(pw!=NULL)
+	{
+		chown(authfile,pw->pw_uid,pw->pw_gid);
+	}
 	g_free(authfile);
 }
 
@@ -704,9 +722,6 @@ static char ** create_client_auth(struct passwd *pw,char **env)
 {
 	LXSession *s;
 	char *authfile;
-	
-	if(pw->pw_uid==0) /* root don't need it */
-		return env;
         
 	s=lxsession_find_user(pw->pw_uid);
 	if(!s)
@@ -732,7 +747,13 @@ static char ** create_client_auth(struct passwd *pw,char **env)
 		}
 	}
 	remove(authfile);
-	xauth_write_file(authfile,s->display,s->mcookie);
+	if(xauth_write_file(authfile,s->display,s->mcookie)==-1)
+	{
+		g_free(authfile);
+		authfile = g_strdup_printf("/var/run/lxdm/.Xauth%d",pw->pw_uid);
+		remove(authfile);
+		xauth_write_file(authfile,s->display,s->mcookie);
+	}
 	env=g_environ_setenv(env,"XAUTHORITY",authfile,TRUE);
 	chown(authfile,pw->pw_uid,pw->pw_gid);
 	g_free(authfile);
@@ -813,6 +834,9 @@ void switch_user(struct passwd *pw, const char *run, char **env)
 	signal(SIGPIPE, SIG_DFL);
 	signal(SIGALRM, SIG_DFL);
 	signal(SIGHUP, SIG_DFL);
+	signal(SIGTTIN, SIG_DFL);
+	signal(SIGTTOU, SIG_DFL);
+	signal(SIGUSR1, SIG_DFL);
 	close_left_fds();
 
 	g_spawn_command_line_async ("/etc/lxdm/PostLogin",NULL);
@@ -883,26 +907,57 @@ static void put_lock(void)
     g_free(lockfile);
 }
 
+static int get_run_level(void)
+{
+#if defined(HAVE_UTMPX_H) && defined(RUN_LVL)
+	int res;
+	struct utmpx *ut,tmp;
+
+	setutxent();
+	tmp.ut_type=RUN_LVL;
+	ut=getutxid(&tmp);
+	if(!ut)
+	{
+		endutxent();
+		return '5';
+	}
+	res=ut->ut_pid & 0xff;
+	endutxent();
+	//g_message("runlevel %c\n",res);
+	return res;
+#else
+	return '5';
+#endif
+}
+
 static void on_xserver_stop(void *data,int pid, int status)
 {
 	LXSession *s=data;
 	LXSession *greeter;
-
-	g_message("xserver stop, restart. return status %x\n",status);
+	int level;
 
 	stop_pid(pid);
 	s->server = -1;
 	lxsession_stop(s);
+	
+	level=get_run_level();
+	if(level=='6' || level=='0')
+	{
+		return;
+	}
+	
+	g_message("xserver stop, restart. return status %x\n",status);
+
 	greeter=lxsession_find_greeter();
 	if(s->greeter || !greeter)
 	{
 		s->greeter=TRUE;
 		xconn_close(s->dpy);
 		s->dpy=NULL;
-		lxdm_startx(s);
 		ui_drop();
+		lxdm_startx(s);
 		ui_prepare();
-		lxsession_set_active(greeter);
+		lxsession_set_active(s);
 	}
 	else
 	{
@@ -911,7 +966,7 @@ static void on_xserver_stop(void *data,int pid, int status)
 	}
 }
 
-void lxdm_startx(LXSession *s)
+static void lxdm_startx(LXSession *s)
 {
 	char *arg;
 	char **args;
@@ -980,6 +1035,9 @@ void lxdm_startx(LXSession *s)
 		g_spawn_command_line_async(arg,NULL);
 		g_free(arg);
 	}
+	#ifndef DISABLE_XAUTH
+	unsetenv("XAUTHORITY");
+	#endif
 }
 
 static void exit_cb(void)
@@ -994,27 +1052,32 @@ static void exit_cb(void)
 	g_key_file_free(config);
 }
 
-static int get_run_level(void)
+static gboolean delayed_restart_greeter(LXSession *s)
 {
-#if defined(HAVE_UTMPX_H) && defined(RUN_LVL)
-	int res=0;
-	struct utmpx *ut,tmp;
-
-	setutxent();
-	tmp.ut_type=RUN_LVL;
-	ut=getutxid(&tmp);
-	if(!ut)
+	int level;
+	
+	level=get_run_level();
+	if(level=='0' || level=='6')
 	{
-		endutxent();
-		return 5;
+		if(level=='0')
+			g_spawn_command_line_sync("/etc/lxdm/PreShutdown",0,0,0,0);
+		else
+			g_spawn_command_line_sync("/etc/lxdm/PreReboot",0,0,0,0);
+		g_message("run level %c\n",level);
+		lxdm_quit_self(0);
+		return FALSE;
 	}
-	res=ut->ut_pid & 0xff;
-	endutxent();
-	//g_message("runlevel %c\n",res);
-	return res;
-#else
-	return 5;
-#endif
+	
+	if(s && s!=lxsession_greeter())
+	{
+		lxsession_free(s);
+	}
+	else if(!s)
+	{
+		lxsession_greeter();
+	}
+	
+	return FALSE;
 }
 
 static void on_session_stop(void *data,int pid, int status)
@@ -1022,7 +1085,18 @@ static void on_session_stop(void *data,int pid, int status)
 	int level;
 	LXSession *s=data;
 
-	lxsession_stop(s);
+	gchar *argv[] = { "/etc/lxdm/PostLogout", NULL };
+	g_spawn_async(NULL, argv, s->env, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+
+	if(g_key_file_get_integer(config,"server","reset",NULL)!=1)
+	{
+		lxsession_stop(s);
+	}
+	else
+	{
+		lxsession_free(s);
+		s=NULL;
+	}
 
 	level=get_run_level();
 	if(level=='0' || level=='6')
@@ -1033,23 +1107,14 @@ static void on_session_stop(void *data,int pid, int status)
 			g_spawn_command_line_sync("/etc/lxdm/PreReboot",0,0,0,0);
 		g_message("run level %c\n",level);
 		lxdm_quit_self(0);
+		return;
 	}
-	if(s!=lxsession_greeter())
-	{
-		lxsession_free(s);
-	}
-	else if(g_key_file_get_integer(config,"server","reset",NULL)==1)
-	{
-		lxsession_free(s);
-		lxsession_greeter();
-	}
-	gchar *argv[] = { "/etc/lxdm/PostLogout", NULL };
-	g_spawn_async(NULL, argv, s->env, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+	g_timeout_add(300,(GSourceFunc)delayed_restart_greeter,s);
 }
 
-gboolean lxdm_get_session_info(char *session,char **pname,char **pexec)
+gboolean lxdm_get_session_info(const char *session,char **pname,char **pexec,char **pdesktop_names)
 {
-	char *name=NULL,*exec=NULL;
+	char *name=NULL,*exec=NULL,**names=NULL,*desktop_names=NULL;
 	if(!session || !session[0])
 	{
 		name=g_key_file_get_string(config, "base", "session", 0);
@@ -1072,6 +1137,11 @@ gboolean lxdm_get_session_info(char *session,char **pname,char **pexec)
 			}
 			name=g_key_file_get_string(cfg,"Desktop Entry","Name",NULL);
 			exec=g_key_file_get_string(cfg,"Desktop Entry","Exec",NULL);
+			names = g_key_file_get_string_list (cfg, "Desktop Entry", "DesktopNames", NULL, NULL);
+			if (names != NULL) {
+				desktop_names = g_strjoinv (":", names);
+				g_strfreev (names);
+			}
 			g_key_file_free(cfg);
 			if(!name || !exec)
 			{
@@ -1097,6 +1167,11 @@ gboolean lxdm_get_session_info(char *session,char **pname,char **pexec)
 			{
 				name = g_key_file_get_locale_string(f, "Desktop Entry", "Name", NULL, NULL);
 				exec = g_key_file_get_string(f, "Desktop Entry", "Exec", NULL);
+				names = g_key_file_get_string_list (f, "Desktop Entry", "DesktopNames", NULL, NULL);
+				if (names != NULL) {
+					desktop_names = g_strjoinv (":", names);
+					g_strfreev (names);
+				}
 			}
 			else
 			{
@@ -1120,6 +1195,7 @@ gboolean lxdm_get_session_info(char *session,char **pname,char **pexec)
 	}
 	if(pname) *pname=name;
 	if(pexec) *pexec=exec;
+	if(pdesktop_names) *pdesktop_names=desktop_names;
 	return TRUE;
 }
 
@@ -1194,7 +1270,7 @@ static void lxdm_save_login(char *session,char *lang)
 
 void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
 {
-	char *session_name=0,*session_exec=0;
+	char *session_name=0,*session_exec=0,*session_desktop_names=0;
 	gboolean alloc_session=FALSE,alloc_lang=FALSE;
 	int pid;
 	LXSession *s,*prev;
@@ -1214,10 +1290,15 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
 			session=g_key_file_get_string(dmrc,"Desktop","Session",NULL);
 			alloc_session=TRUE;
 		}
+		if(!lang || !lang[0])
+		{
+			lang=g_key_file_get_string(dmrc,"Desktop","Language",NULL);
+			alloc_lang=TRUE;
+		}
 		g_key_file_free(dmrc);
 	}
 
-	if(!lxdm_get_session_info(session,&session_name,&session_exec))
+	if(!lxdm_get_session_info(session,&session_name,&session_exec,&session_desktop_names))
 	{
 		if(alloc_session)
 			g_free(session);
@@ -1242,6 +1323,9 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
 	{
 		if(s) lxsession_free(s);
 		lxsession_set_active(prev);
+		g_free(session_name);
+		g_free(session_exec);
+		g_free(session_desktop_names);
 		return;
 	}
 	if(!s) s=lxsession_find_idle();
@@ -1314,17 +1398,21 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
 	path = g_key_file_get_string(config, "base", "path", 0);
 	if( G_UNLIKELY(path) && path[0] ) /* if PATH is specified in config file */
 		env=g_environ_setenv(env, "PATH", path, TRUE); /* override current $PATH with config value */
-	else if(!getenv("PATH")) /* if PATH is not set */
+	else /* don't use the global env, they are bad for user */
 		env=g_environ_setenv(env, "PATH", "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin", TRUE); /* set proper default */
 	g_free(path);
 	/* optionally override $LANG, $LC_MESSAGES, and $LANGUAGE */
 	if( lang && lang[0] )
 	{
-		/* use this special environment variable to set the language related
-		   env. variables from Xsession after ~/.profile has been sourced */
-		env=g_environ_setenv(env, "GREETER_LANGUAGE", lang, TRUE);
+		env=g_environ_setenv(env, "LANG", lang, TRUE);
+		env=g_environ_setenv(env, "LC_MESSAGES", lang, TRUE);
+		env=g_environ_setenv(env, "LANGUAGE", lang, TRUE);
 	}
+
+	if( session_desktop_names && session_desktop_names[0] )
+		env=g_environ_setenv(env, "XDG_CURRENT_DESKTOP", session_desktop_names, TRUE);
 	
+	env=lxdm_auth_append_env(&s->auth,env);
 #ifndef DISABLE_XAUTH
 	env=create_client_auth(pw,env);
 #endif
@@ -1343,6 +1431,7 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
 	
 	g_free(session_name);
 	g_free(session_exec);
+	g_free(session_desktop_names);
 	if(alloc_session)
 		g_free(session);
 	if(alloc_lang)
@@ -1483,7 +1572,7 @@ static void lxdm_signal_handler(void *data,int sig)
 	switch(sig){
 	case SIGTERM:
 	case SIGINT:
-		g_critical("QUIT BY SIGNAL\n");
+		g_critical("QUIT BY SIGNAL %d\n",sig);
 		lxdm_quit_self(0);
 		break;
 	default:
@@ -1619,6 +1708,7 @@ static GString *lxdm_user_cmd(void *data,int user,int arc,char **arg)
 		if(p)
 		{
 			res=g_string_new_len(p,len);
+			g_free(p);
 		}
 		g_key_file_free(kf);
 	}

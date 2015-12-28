@@ -154,15 +154,22 @@ static void set_face_file(const char *filename)
 		if(g_file_get_contents(filename,&contents,&length,NULL))
 		{
 			gchar *path=g_build_filename(user->pw_dir,".face",NULL);
+			seteuid(user->pw_uid);
+			setegid(user->pw_gid);
 			g_file_set_contents(path,contents,length,NULL);
-			chown(path,user->pw_uid,user->pw_gid);
+			seteuid(getuid());
+			setegid(getgid());
 			g_free(path);
 		}
 	}
 	else
 	{
 		gchar *path=g_build_filename(user->pw_dir,".face",NULL);
+		seteuid(user->pw_uid);
+		setegid(user->pw_gid);
 		unlink(path);
+		seteuid(getuid());
+		setegid(getgid());
 		g_free(path);
 	}
 	w=(GtkWidget*)gtk_builder_get_object(builder,"user-icon-image");

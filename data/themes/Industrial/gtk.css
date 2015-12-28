@@ -1,6 +1,6 @@
 #lxdm {
 	background-image: url("wave.svg");
-	background-size: 100%;
+	background-repeat: round;
 }
 
 #bottom_pane {
@@ -12,10 +12,12 @@
 	color: #ffffff;
 }
 
-#user_list, #login_entry {
-	background-image: none;
+#prompt {
+	font: Sans 14;
+	color: #000000;
 }
 
-#prompt, #bottom_pane GtkLabel {
-	color: #ffffff;
+#bottom_pane GtkLabel {
+	font: Sans 12;
+	color: #9E9D9B;
 }
