@@ -1,2 +1,3 @@
 23_debian-config.patch
 galliumos-config
+x11_priority.patch

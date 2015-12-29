@@ -1,0 +1,20 @@
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -48,6 +48,8 @@
+ #include <sys/vt.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/time.h>
++#include <sys/resource.h>
+ 
+ #include <execinfo.h>
+ 
+@@ -1038,6 +1040,8 @@
+ 	#ifndef DISABLE_XAUTH
+ 	unsetenv("XAUTHORITY");
+ 	#endif
++
++        setpriority(PRIO_PROCESS, s->server, -19);
+ }
+ 
+ static void exit_cb(void)
