@@ -1,3 +1,9 @@
+lxdm (0.5.3-1galliumos4) unstable; urgency=low
+
+  * A patch to set the cros mouse scaling x11 props
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Tue, 26 Jan 2016 21:05:33 +0000
+
 lxdm (0.5.3-1galliumos3) unstable; urgency=low
 
   * Set package version to match provenance and format

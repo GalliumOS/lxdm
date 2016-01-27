@@ -1,0 +1,104 @@
+--- a/src/greeter.c
++++ b/src/greeter.c
+@@ -37,6 +37,7 @@
+ #include <stdlib.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
++#include <math.h>
+ 
+ #include "lxcom.h"
+ #include "greeter-utils.h"
+@@ -1064,6 +1065,77 @@
+ 	return TRUE;
+ }
+ 
++static void set_cros_display_prop(char *prop, int value, GdkScreen *scr) {
++    Display *dpy = gdk_x11_display_get_xdisplay(gdk_display_get_default());
++    Window  root = (Window) GDK_DRAWABLE_XID(gdk_screen_get_root_window(scr));
++    glong   *data;
++    Atom    name, type;
++
++    data = g_malloc(sizeof(glong));
++    data[0] = value;
++    name = XInternAtom(dpy, prop, FALSE);
++    type = XInternAtom(dpy, "CARDINAL", FALSE);
++    XChangeProperty(dpy,
++		    root,
++		    name,
++		    type,
++		    32,
++		    PropModeReplace,
++		    (unsigned char *)data,
++		    1);
++
++    g_free(data);
++}
++
++static void set_cros_display_props(GdkScreen *scr) {
++    float scale_factor;
++    const float scale_factors[] = {1.0f, 1.0f, 1.25f, 1.33f, 1.4f, 1.5f, 1.8f,
++					2.0f, 2.5f, 3.0f};
++    int i, num_factors;
++    float smallest_diff, diff, new_scale_factor;
++    gchar *plug;
++    gint internal = 0;
++    gint num_monitors;
++    guint dpi, width_mm;
++    GdkRectangle rect;
++
++    num_monitors = gdk_screen_get_n_monitors (scr);
++    if (num_monitors <= 0)
++      return;
++
++    width_mm = gdk_screen_get_monitor_width_mm(scr, 0);
++    gdk_screen_get_monitor_geometry(scr, 0, &rect);
++    dpi = rect.width / (width_mm / 25.4);
++
++    if (dpi <= 0) {
++	dpi = 96.0f;
++    }
++
++    scale_factor = dpi/96.0f;
++    smallest_diff = diff = 0;
++    new_scale_factor = scale_factor;
++    num_factors = sizeof(scale_factors)/sizeof(scale_factors[0]);
++    for (i = 0; i < num_factors; i++) {
++	diff = fabs(scale_factor - scale_factors[i]);
++	if (!i || diff < smallest_diff) {
++	    smallest_diff = diff;
++	    new_scale_factor = scale_factors[i];
++	}
++    }
++
++    scale_factor = new_scale_factor;
++    internal = 0;
++    plug = gdk_screen_get_monitor_plug_name (scr, 0);
++    if (!strcmp(plug, "eDP1")) {
++	internal = 1;
++    }
++    g_free(plug);
++
++    set_cros_display_prop("_CHROME_DISPLAY_ROTATION", 0, scr);
++    set_cros_display_prop("_CHROME_DISPLAY_SCALE_FACTOR", (int)(scale_factor * 100), scr);
++    set_cros_display_prop("_CHROME_DISPLAY_INTERNAL", internal, scr);
++}
++
+ static void on_screen_size_changed(GdkScreen *screen,GtkWidget *win)
+ {
+ 	GdkRectangle rc;
+@@ -1086,6 +1158,7 @@
+ 	gtk_window_move(GTK_WINDOW(win),rc.x,rc.y);
+ 	gtk_window_resize(GTK_WINDOW(win),rc.width,rc.height);
+ 	ui_set_bg(window,config);
++	set_cros_display_props(screen);
+ }
+ 
+ static gint login_entry_on_key_press (GtkWidget *widget,GdkEventKey *event)
+@@ -1279,6 +1352,7 @@
+ 		gtk_widget_grab_focus(login_entry);
+ 		
+ 	scr = gtk_widget_get_screen(win);
++	set_cros_display_props(scr);
+ 	g_signal_connect(scr, "size-changed", G_CALLBACK(on_screen_size_changed), win);
+ }
+ 
