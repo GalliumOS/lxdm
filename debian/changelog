@@ -1,3 +1,10 @@
+lxdm (0.5.3-1galliumos5) vivid-galliumos; urgency=medium
+
+  * Change greeter defaults: user as text entry, hide bottom bar
+  * Change greeter font colors
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 28 Jan 2016 18:55:37 +0000
+
 lxdm (0.5.3-1galliumos4) unstable; urgency=low
 
   * A patch to set the cros mouse scaling x11 props

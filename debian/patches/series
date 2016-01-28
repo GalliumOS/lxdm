@@ -2,3 +2,4 @@
 galliumos-config
 x11_priority.patch
 cros_mouse_scaling.patch
+soften_greeter_font_colors.diff
