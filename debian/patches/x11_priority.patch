@@ -1,6 +1,14 @@
 --- a/src/lxdm.c
 +++ b/src/lxdm.c
-@@ -48,6 +48,8 @@
+@@ -32,6 +32,7 @@
+ #include <ctype.h>
+ #include <stdint.h>
+ #include <unistd.h>
++#include <sys/syscall.h>   /* For SYS_xxx definitions */
+ #include <stdarg.h>
+ #include <fcntl.h>
+ #include <pwd.h>
+@@ -48,6 +49,8 @@
  #include <sys/vt.h>
  #include <sys/ioctl.h>
  #include <sys/stat.h>
@@ -9,12 +17,17 @@
  
  #include <execinfo.h>
  
-@@ -1038,6 +1040,8 @@
+@@ -1038,6 +1041,13 @@
  	#ifndef DISABLE_XAUTH
  	unsetenv("XAUTHORITY");
  	#endif
 +
++        //Set the nice level to be the highest priority for the X server
 +        setpriority(PRIO_PROCESS, s->server, -19);
++
++        //Set the io priority of the X server
++        //Sets the class to be realtime and the priority to be 0
++        syscall(SYS_ioprio_set, 1, s->server, 8192);
  }
  
  static void exit_cb(void)
