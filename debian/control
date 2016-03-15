@@ -1,7 +1,7 @@
 Source: lxdm
 Section: x11
 Priority: optional
-Maintainer: Debian LXDE Maintainers <lxde-debian@lists.lxde.org>
+Maintainer: Debian LXDE Maintainers <pkg-lxde-maintainers@lists.alioth.debian.org>
 Uploaders:
  Andrew Lee (李健秋) <ajqlee@debian.org>,
  Andriy Grytsenko <andrej@rep.kiev.ua>
@@ -21,8 +21,8 @@ Depends:
  ${misc:Depends}, ${shlibs:Depends}, gtk2-engines-pixbuf, iso-codes,
  libpam-modules, libpam-runtime, librsvg2-common, lsb-base,
  x11-utils | xmessage,
- debconf (>= 1.2.9) | debconf-2.0, desktop-base
-Recommends: lxde-common, lxsession
+ debconf (>= 1.2.9) | debconf-2.0
+Recommends: lxde-common, desktop-base
 Provides: x-display-manager
 Description: LXDE display manager
  LXDM is a GUI application for the Lightweight X11 Desktop Environment
