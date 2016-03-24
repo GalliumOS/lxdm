@@ -1,36 +1,46 @@
+lxdm (0.5.3-1galliumos6) vivid-galliumos; urgency=medium
+
+  * Changed the I/O priority of the X server to be realtime and the highest priority
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Mon, 22 Feb 2016 18:55:37 +0000
+
+lxdm (0.5.3-1galliumos5) vivid-galliumos; urgency=medium
+
+  * Change greeter defaults: user as text entry, hide bottom bar
+  * Change greeter font colors
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 28 Jan 2016 18:55:37 +0000
+
+lxdm (0.5.3-1galliumos4) unstable; urgency=low
+
+  * A patch to set the cros mouse scaling x11 props
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Tue, 26 Jan 2016 21:05:33 +0000
+
+lxdm (0.5.3-1galliumos3) unstable; urgency=low
+
+  * Set package version to match provenance and format
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 10 Jan 2016 21:05:33 +0000
+
 lxdm (0.5.3-1-galliumos2) unstable; urgency=low
 
-  * Fixed cros scaling patch
+  * A patch to set the x11 priority
 
- -- Hugh Greenberg <hugegreenbug@gmail.com>  Wed, 23 Mar 2016 13:32:17 +0200
+ -- Hugh Greenberg <hugh@galliumos.org>  Mon, 28 Dec 2015 21:34:36 +0200
 
 lxdm (0.5.3-1-galliumos1) unstable; urgency=low
 
-  * Added GalliumOS patches
-  * Added GalliumOS theme
+  * Merged upstream changes
 
- -- Hugh Greenberg <hugegreenbug@gmail.com>  Mon, 14 Mar 2016 13:32:17 +0200
+ -- Hugh Greenberg <hugh@galliumos.org>  Thu, 28 Dec 2015 21:34:36 +0200
 
-lxdm (0.5.3-1) unstable; urgency=low
+lxdm (0.5.0-3-galliumos2) unstable; urgency=low
 
-  * Removing lxsession from Recommends, it doesn't related to lxdm in any way.
-  * Stopping kill all user processes in PostLogout (Closes: #797244).
-  * Merging upstream version 0.5.3 (Closes: #805659 CVE-2015-8308).
+  * Changed config for galliumos
+  * Removed busname line in service file to prevent lxdm from restarting every 2 mins
 
- -- Andriy Grytsenko <andrej@rep.kiev.ua>  Thu, 26 Nov 2015 13:32:17 +0200
-
-lxdm (0.5.1-1) unstable; urgency=low
-
-  * Removing conflicting BusName statement from lxdm.service (Closes: #781949).
-  * Changing Maintainer e-mail to Alioth based one.
-  * Merging upstream version 0.5.1.
-  * Updating Danish translation for debconf files, by Joe Dalton
-    (Closes: #781342).
-  * Removing 27_format_security.patch - it was applied by upstream.
-  * Refreshing quilt patches.
-  * Moving desktop-base from Depends to Recommends by derivatives request.
-
- -- Andriy Grytsenko <andrej@rep.kiev.ua>  Sun, 17 May 2015 21:21:41 +0300
+ -- Hugh Greenberg <hugh@galliumos.org>  Thu, 17 Dec 2015 21:34:36 +0200
 
 lxdm (0.5.0-3) unstable; urgency=low
 

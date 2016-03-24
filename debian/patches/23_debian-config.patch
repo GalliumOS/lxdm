@@ -24,7 +24,7 @@ Author:Klaumi Klingsporn <klaumikli@gmx.de
 +
 +# Kills all your processes when you log out.
 +# (Stolen von Arch-Linux)
-+#ps --user $USER | awk 'NR > 1 {print $1}' | xargs -t kill
++ps --user $USER | awk 'NR > 1 {print $1}' | xargs -t kill
 +
 +# Fix for pulseaudio (Stolen von Arch-Linux):
 +test -x /usr/bin/pax11publish && /usr/bin/pax11publish -r

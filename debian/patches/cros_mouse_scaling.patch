@@ -70,7 +70,7 @@
 +    }
 +
 +    scale_factor = new_scale_factor;
-+    internal = 1;
++    internal = 0;
 +
 +    set_cros_display_prop("_CHROME_DISPLAY_ROTATION", 0, scr);
 +    set_cros_display_prop("_CHROME_DISPLAY_SCALE_FACTOR", (int)(scale_factor * 100), scr);
