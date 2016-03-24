@@ -8,7 +8,7 @@
  
  #include "lxcom.h"
  #include "greeter-utils.h"
-@@ -1064,6 +1065,77 @@
+@@ -1064,6 +1065,71 @@
  	return TRUE;
  }
  
@@ -40,7 +40,6 @@
 +					2.0f, 2.5f, 3.0f};
 +    int i, num_factors;
 +    float smallest_diff, diff, new_scale_factor;
-+    gchar *plug;
 +    gint internal = 0;
 +    gint num_monitors;
 +    guint dpi, width_mm;
@@ -71,12 +70,7 @@
 +    }
 +
 +    scale_factor = new_scale_factor;
-+    internal = 0;
-+    plug = gdk_screen_get_monitor_plug_name (scr, 0);
-+    if (!strcmp(plug, "eDP1")) {
-+	internal = 1;
-+    }
-+    g_free(plug);
++    internal = 1;
 +
 +    set_cros_display_prop("_CHROME_DISPLAY_ROTATION", 0, scr);
 +    set_cros_display_prop("_CHROME_DISPLAY_SCALE_FACTOR", (int)(scale_factor * 100), scr);
@@ -86,7 +80,7 @@
  static void on_screen_size_changed(GdkScreen *screen,GtkWidget *win)
  {
  	GdkRectangle rc;
-@@ -1086,6 +1158,7 @@
+@@ -1086,6 +1152,7 @@
  	gtk_window_move(GTK_WINDOW(win),rc.x,rc.y);
  	gtk_window_resize(GTK_WINDOW(win),rc.width,rc.height);
  	ui_set_bg(window,config);
@@ -94,7 +88,7 @@
  }
  
  static gint login_entry_on_key_press (GtkWidget *widget,GdkEventKey *event)
-@@ -1279,6 +1352,7 @@
+@@ -1279,6 +1346,7 @@
  		gtk_widget_grab_focus(login_entry);
  		
  	scr = gtk_widget_get_screen(win);

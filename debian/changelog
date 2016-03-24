@@ -1,3 +1,9 @@
+lxdm (0.5.3-1-galliumos2) unstable; urgency=low
+
+  * Fixed cros scaling patch
+
+ -- Hugh Greenberg <hugegreenbug@gmail.com>  Wed, 23 Mar 2016 13:32:17 +0200
+
 lxdm (0.5.3-1-galliumos1) unstable; urgency=low
 
   * Added GalliumOS patches
