@@ -1,3 +1,9 @@
+lxdm (0.5.3-1galliumos7) xenial; urgency=medium
+
+  * Prevented segfault by not using gdk-screen-get-monitor-plug-name
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Wed, 23 Mar 2016 18:55:37 +0000
+
 lxdm (0.5.3-1galliumos6) vivid-galliumos; urgency=medium
 
   * Changed the I/O priority of the X server to be realtime and the highest priority
