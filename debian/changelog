@@ -1,3 +1,10 @@
+lxdm (0.5.3-1galliumos8) xenial; urgency=medium
+
+  * Changed config file to set the X command
+  * Removed the x11_priority.patch
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Wed, 23 Mar 2016 18:55:37 +0000
+
 lxdm (0.5.3-1galliumos7) xenial; urgency=medium
 
   * Prevented segfault by not using gdk-screen-get-monitor-plug-name
