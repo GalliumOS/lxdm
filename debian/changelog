@@ -1,3 +1,9 @@
+lxdm (0.5.3-1galliumos9) xenial; urgency=medium
+
+  * Removed the Recommends line in debian/control for lxde-common, lxsession
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Tue, 26 Apr 2016 18:55:37 +0000
+
 lxdm (0.5.3-1galliumos8) xenial; urgency=medium
 
   * Changed config file to set the X command

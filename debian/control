@@ -22,7 +22,6 @@ Depends:
  libpam-modules, libpam-runtime, librsvg2-common, lsb-base,
  x11-utils | xmessage,
  debconf (>= 1.2.9) | debconf-2.0, desktop-base
-Recommends: lxde-common, lxsession
 Provides: x-display-manager
 Description: LXDE display manager
  LXDM is a GUI application for the Lightweight X11 Desktop Environment
