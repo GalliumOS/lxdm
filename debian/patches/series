@@ -1,4 +1,5 @@
 23_debian-config.patch
+galliumos-update_lxdm_conf.diff
 galliumos-config
 cros_mouse_scaling.patch
 soften_greeter_font_colors.diff
