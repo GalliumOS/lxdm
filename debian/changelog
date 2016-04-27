@@ -1,4 +1,4 @@
-lxdm (0.5.3-1galliumos9) xenial; urgency=medium
+lxdm (0.5.3-16.04-galliumos1) xenial; urgency=medium
 
   * Removed the Recommends line in debian/control for lxde-common, lxsession
 
