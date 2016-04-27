@@ -1,3 +1,58 @@
+--- a/data/lxdm.conf.in
++++ b/data/lxdm.conf.in
+@@ -7,7 +7,7 @@
+ # timeout=10
+ 
+ ## default session or desktop used when no systemwide config
+-# session=/usr/bin/startlxde
++session=/usr/bin/startxfce4
+ 
+ ## uncomment and set to set numlock on your keyboard
+ # numlock=0
+@@ -23,7 +23,7 @@
+ 
+ [server]
+ ## arg used to start xserver, not fully function
+-# arg=/usr/bin/X -background vt1
++arg=/usr/bin/X -background vt7
+ # uncomment this if you really want xserver listen to tcp
+ # tcp_listen=1
+ # uncoment this if you want reset the xserver after logou
+@@ -31,29 +31,28 @@
+ 
+ [display]
+ ## gtk theme used by greeter
+-gtk_theme=Clearlooks
++gtk_theme=Arc-GalliumOS
+ 
+ ## background of the greeter
+ #bg=/usr/share/backgrounds/default.png
+-bg=/usr/share/images/desktop-base/login-background.svg
+ 
+ ## if show bottom pane
+-bottom_pane=1
++bottom_pane=0
+ 
+ ## if show language select control
+-lang=1
++lang=0
+ 
+ ## if show keyboard layout select control
+ keyboard=0
+ 
+ ## the theme of greeter
+-theme=Industrial
++theme=GalliumOS
+ 
+ [input]
+ 
+ [userlist]
+ ## if disable the user list control at greeter
+-disable=0
++disable=1
+ 
+ ## whitelist user
+ white=
 --- a/data/Makefile.am
 +++ b/data/Makefile.am
 @@ -46,10 +46,26 @@

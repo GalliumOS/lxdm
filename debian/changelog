@@ -1,12 +1,3 @@
-lxdm (0.5.3-16.04-galliumos2) xenon; urgency=medium
-
-  * move lxdm.conf.in patch to its own file
-  * set default PATH to match Ubuntu/bash defaults
-    - put */sbin before */bin
-    - add /usr/games and /usr/local/games
-
- -- reynhout <reynhout@galliumos.org>  Wed, 27 Apr 2016 15:36:38 +0000
-
 lxdm (0.5.3-16.04-galliumos1) xenial; urgency=medium
 
   * Removed the Recommends line in debian/control for lxde-common, lxsession
