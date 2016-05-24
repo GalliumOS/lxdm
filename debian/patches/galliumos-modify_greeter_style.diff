@@ -1,0 +1,57 @@
+Index: lxdm-0.5.3/data/themes/GalliumOS/gtkrc
+===================================================================
+--- lxdm-0.5.3.orig/data/themes/GalliumOS/gtkrc
++++ lxdm-0.5.3/data/themes/GalliumOS/gtkrc
+@@ -16,20 +16,20 @@
+
+ style "time"
+ {
+-       fg[NORMAL]="#ffffff"
+-       font_name="Sans 12"
++       fg[NORMAL]="#eeeeee"
++       font_name="Ubuntu 12"
+ }
+
+ style "prompt"
+ {
+-       fg[NORMAL]="#000000"
+-       font_name="Sans Bold 14"
++       fg[NORMAL]="#ffffff"
++       font_name="Ubuntu Medium 14"
+ }
+
+ # Normally this won't paint an invisible event box, but we did some hacks in greeter.c.
+ style "bottom"
+ {
+-       font_name="Sans 12"
++       font_name="Ubuntu 12"
+        fg[NORMAL] = "#9E9D9B"
+        engine "pixmap"
+        {
+Index: lxdm-0.5.3/data/themes/GalliumOS/gtk.css
+===================================================================
+--- lxdm-0.5.3.orig/data/themes/GalliumOS/gtk.css
++++ lxdm-0.5.3/data/themes/GalliumOS/gtk.css
+@@ -8,16 +8,16 @@
+ }
+
+ #time {
+-       font: Sans 12;
+-       color: #ffffff;
++       font: Ubuntu 12;
++       color: #eeeeee;
+ }
+
+ #prompt {
+-       font: Sans 14;
+-       color: #000000;
++       font: Ubuntu Medium 14;
++       color: #ffffff;
+ }
+
+ #bottom_pane GtkLabel {
+-       font: Sans 12;
++       font: Ubuntu 12;
+        color: #9E9D9B;
+ }
+
