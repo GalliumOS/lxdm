@@ -1,3 +1,9 @@
+lxdm (0.5.3-16.04-galliumos3) xenon; urgency=medium
+
+  * update greeter art for xenon
+
+ -- reynhout <reynhout@galliumos.org>  Tue, 24 May 2016 00:41:04 +0000
+
 lxdm (0.5.3-16.04-galliumos2) xenon; urgency=medium
 
   * set default PATH to match Ubuntu/bash defaults; move lxdm.conf changes to separate patch
