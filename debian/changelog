@@ -1,3 +1,23 @@
+lxdm (0.5.3-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop Build-Depends on deprecated libck-connector-dev (Closes: #865043).
+  * Drop ExecStartPre hack from lxdm.service which is no longer necessary.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 14 Feb 2018 18:18:12 +0100
+
+lxdm (0.5.3-2) unstable; urgency=medium
+
+  * Adding 41-force-reset.patch to enforce reset (Closes: #842333).
+  * Adding 42-fix-user-list.patch to fix empty greeter (Closes: #810631).
+  * Adding 17-follow-symlink.patch to follow symlink on config save
+    (Closes: #810632).
+  * Refreshing 15-path-replace.patch and 22_ubuntu_i18n_oneiric.patch.
+  * Bump Standards-Version to 3.9.8.
+  * Adding hardening=+all to DEB_BUILD_MAINT_OPTIONS.
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Fri, 11 Nov 2016 23:58:40 +0200
+
 lxdm (0.5.3-1) unstable; urgency=low
 
   * Removing lxsession from Recommends, it doesn't related to lxdm in any way.

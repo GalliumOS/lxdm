@@ -1,7 +1,7 @@
 #launchpad bug : #524761
 --- a/src/lxdm.c
 +++ b/src/lxdm.c
-@@ -1341,7 +1341,7 @@
+@@ -1398,7 +1398,7 @@
  	path = g_key_file_get_string(config, "base", "path", 0);
  	if( G_UNLIKELY(path) && path[0] ) /* if PATH is specified in config file */
  		env=g_environ_setenv(env, "PATH", path, TRUE); /* override current $PATH with config value */

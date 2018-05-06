@@ -1,0 +1,16 @@
+Description: fix for #810631: problem when password check fail
+Author: PICCORO McKAY Lenz <mckaygerhard@gmail.com>
+Bug: https://sourceforge.net/p/lxde/bugs/690
+Applied-Upstream: 5d36a53702f1e60bb316946f1edccb2dbc3c01bd
+
+--- a/src/greeter.c
++++ b/src/greeter.c
+@@ -146,7 +146,7 @@
+ 		if(user_list_scrolled)
+ 			gtk_widget_show(user_list_scrolled);
+ 		else
+-			gtk_widget_hide(user_list);
++			gtk_widget_show(user_list);
+ 		gtk_widget_grab_focus(user_list);
+ 	}
+ 	else

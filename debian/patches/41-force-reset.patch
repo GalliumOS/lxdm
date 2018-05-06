@@ -1,0 +1,31 @@
+Description: Enforce reset X server after logout.
+Author: Andriy Grytsenko <andrej@rep.kiev.ua>
+Bug: https://sourceforge.net/p/lxde/bugs/835/
+
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -1088,11 +1088,13 @@
+ 	gchar *argv[] = { "/etc/lxdm/PostLogout", NULL };
+ 	g_spawn_async(NULL, argv, s->env, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+ 
++#if 0 /* ignore setting and always reset, see Debian bug #842333 */
+ 	if(g_key_file_get_integer(config,"server","reset",NULL)!=1)
+ 	{
+ 		lxsession_stop(s);
+ 	}
+ 	else
++#endif
+ 	{
+ 		lxsession_free(s);
+ 		s=NULL;
+--- a/data/lxdm.conf.in
++++ b/data/lxdm.conf.in
+@@ -26,8 +26,6 @@
+ # arg=/usr/bin/X -background vt1
+ # uncomment this if you really want xserver listen to tcp
+ # tcp_listen=1
+-# uncoment this if you want reset the xserver after logou
+-# reset=1
+ 
+ [display]
+ ## gtk theme used by greeter

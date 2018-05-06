@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 LDFLAGS+=-Wl,-z,defs -Wl,--as-needed
 
 # Rename config file

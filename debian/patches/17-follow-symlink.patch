@@ -1,0 +1,22 @@
+Description: follow symlink on configuration update, see bug #810632
+Author: Julien Lavergne <gilir@ubuntu.com>
+Bug: https://sourceforge.net/p/lxde/bugs/223/
+
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -1262,7 +1262,14 @@
+         char* data = g_key_file_to_data(var, &len, NULL);
+ 		mkdir("/var/lib/lxdm",0755);
+ 		chmod("/var/lib/lxdm",0755);
+-        g_file_set_contents(VCONFIG_FILE, data, len, NULL);
++		if( g_file_test(VCONFIG_FILE, G_FILE_TEST_IS_SYMLINK) )
++		{
++			gchar* config_file = g_file_read_link(VCONFIG_FILE, NULL);
++			g_file_set_contents(config_file, data, len, NULL);
++			g_free(config_file);
++		}
++		else
++			g_file_set_contents(VCONFIG_FILE, data, len, NULL);
+         g_free(data);
+ 	}
+ 	g_key_file_free(var);
