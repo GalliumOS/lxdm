@@ -1,0 +1,27 @@
+1 compile and install
+
+./configure --prefix=/usr --sysconfdir=/etc
+make
+make install
+
+libexecdir should change as you system path,
+to do that, pass --libexecdir=/your/path at configure.
+sysconfdir must be /etc.
+
+
+2 custom
+
+modify data/Xsession.in as your distribution
+
+/etc/lxdm/PreLogin
+before login, have root's context
+
+/etc/lxdm/PostLogin
+login, before Xsession, user's context
+
+/etc/lxdm/PostLogout
+when session logout done and ui ready
+
+/etc/lxdm/LoginReady
+lxdm start done, called after ui ready
+

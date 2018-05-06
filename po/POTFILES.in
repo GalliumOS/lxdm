@@ -1,0 +1,9 @@
+[type: gettext/glade]data/lxdm.glade
+[type: gettext/glade]data/config.ui
+[type: gettext/glade]data/themes/Industrial/greeter.ui
+data/themes/Industrial/greeter-gtk3.ui
+src/gdm/gdm-languages.c
+src/greeter.c
+src/lang.c
+src/config.c
+

@@ -1,0 +1,143 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxdm\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2012-10-09 17:16+0200\n"
+"Last-Translator: ALIUM <info@aloisnespor.info>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Pootle 2.0.5\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Pootle-Path: /cs/lxdm/po/cs.po\n"
+"X-Pootle-Revision: 0\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "Uživatel:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "Pracovní plocha:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "Jazyk:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "Klávesnice:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "lxdm config"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "Automatické přihlašování"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "Pozadí"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "Výchozí"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "Zobrazit spodní panel"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "Nastavení spodního panelu"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "Průhledný panel"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "Skrýt sezení"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "Zobrazit nabídku jazyků"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "Zobrazit rozložení klávesnice"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "Skrýt zavírací tlačítko"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "Jiné nastavení"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "Zobrazit seznam uživatelů"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "Skrýt čas"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "Neurčeno"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "Heslo:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "_Restartovat"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_Vypnout"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>přihlášeno</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "Více ..."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "Vyhledat další obrázky..."
+
+#~ msgid "US English"
+#~ msgstr "Angličtina (USA)"
+
+#~ msgid "Simpllified Chinese"
+#~ msgstr "Zjednodušená čínština"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Tradiční čínština"
+
+#~ msgid "German"
+#~ msgstr "Němčina"
+
+#~ msgid "Italian"
+#~ msgstr "Italština"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugalština"

@@ -1,0 +1,60 @@
+# Danish translations for lxdm
+# Copyright (C) 2015 lxdm & nedenstående oversættere.
+# This file is distributed under the same license as the lxdm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxdm\n"
+"Report-Msgid-Bugs-To: lxdm@packages.debian.org\n"
+"POT-Creation-Date: 2007-05-31 08:04+0200\n"
+"PO-Revision-Date: 2015-03-27 17:06+0200\n"
+"Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
+"Language-Team: Danish <dansk@klid.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid "Default display manager:"
+msgstr "Vælg logindhåndtering:"
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"A display manager is a program that provides graphical login capabilities "
+"for the X Window System."
+msgstr ""
+"En logindhåndtering er et program der giver et grafisk logind til X Window-"
+"systemet."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Only one display manager can manage a given X server, but multiple display "
+"manager packages are installed. Please select which display manager should "
+"run by default."
+msgstr ""
+"Der kan kun køre en logindhåndtering for hver X-server, men der er "
+"installeret flere logindhåndteringer Vælg hvilken logindhåndtering der skal "
+"benyttes som standard."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Multiple display managers can run simultaneously if they are configured to "
+"manage different servers; to achieve this, configure the display managers "
+"accordingly, edit each of their init scripts in /etc/init.d, and disable the "
+"check for a default display manager."
+msgstr ""
+"Flere logindhåndteringer kan køre samtidig. hvis de er sat op til at "
+"håndtere forskellige servere. For at få dette til at fungere, skal "
+"logindhåndteringenerne sættes op til det. Det gør du ved, at redigere "
+"hvert af init-skripterne i /etc/init.d, og deaktivere kontrollen for "
+"en standardhåndtering til logind."

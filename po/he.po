@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 23:52+0100\n"
+"PO-Revision-Date: 2012-10-12 14:33+0200\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"X-Pootle-Path: /he/lxdm/po/he.po\n"
+"X-Pootle-Revision: 0\n"
+
+#: ../data/lxdm.glade.h:1 ../data/themes/Industrial/greeter.ui.h:1
+#: ../src/greeter.c:141 ../src/greeter.c:239 ../src/greeter.c:935
+msgid "User:"
+msgstr "משתמש:"
+
+#: ../data/lxdm.glade.h:2 ../data/themes/Industrial/greeter.ui.h:2
+msgid "Desktop:"
+msgstr "שולחן העבודה:"
+
+#: ../data/lxdm.glade.h:3 ../data/themes/Industrial/greeter.ui.h:3
+msgid "Language:"
+msgstr "שפה:"
+
+#: ../data/lxdm.glade.h:4 ../data/themes/Industrial/greeter.ui.h:4
+msgid "Keyboard:"
+msgstr "מקלדת:"
+
+#: ../data/config.ui.h:1
+msgid "lxdm config"
+msgstr "תצורת lxdm"
+
+#: ../data/config.ui.h:2
+msgid "Automatic Login"
+msgstr "כניסה אוטומטית"
+
+#: ../data/config.ui.h:3
+msgid "Background"
+msgstr "רקע"
+
+#: ../data/config.ui.h:4 ../src/greeter.c:307 ../src/lang.c:103
+msgid "Default"
+msgstr "בררת מחדל"
+
+#: ../data/config.ui.h:5
+msgid "Enable bottom panel"
+msgstr "הפעלת לוח תחתון"
+
+#: ../data/config.ui.h:6
+msgid "Bottom Panel Options"
+msgstr "אפשרויות הלוח התחתון"
+
+#: ../data/config.ui.h:7
+msgid "Transparent panel"
+msgstr "לוח שקוף"
+
+#: ../data/config.ui.h:8
+msgid "Hide sessions"
+msgstr "הסתרת הפעלות"
+
+#: ../data/config.ui.h:9
+msgid "Show languages menu"
+msgstr "הצגת תפריט השפות"
+
+#: ../data/config.ui.h:10
+msgid "Show keyboard layouts"
+msgstr "הצגת פריסות המקלדת"
+
+#: ../data/config.ui.h:11
+msgid "Hide quit button"
+msgstr "הסתרת לחצן היציאה"
+
+#: ../data/config.ui.h:12
+msgid "Other Options"
+msgstr "אפשרויות אחרות"
+
+#: ../data/config.ui.h:13
+msgid "Show user list"
+msgstr "הצגת רשימת המשתמשים"
+
+#: ../data/config.ui.h:14
+msgid "Hide time"
+msgstr "הסתרת השעון"
+
+#: ../src/gdm/gdm-languages.c:614
+msgid "Unspecified"
+msgstr "לא מוגדר"
+
+#: ../src/greeter.c:168 ../src/greeter.c:197 ../src/greeter.c:921
+msgid "Password:"
+msgstr "סיסמה:"
+
+#: ../src/greeter.c:726
+msgid "_Reboot"
+msgstr "ה_פעלה מחדש"
+
+#: ../src/greeter.c:730
+msgid "_Shutdown"
+msgstr "_כיבוי"
+
+#: ../src/greeter.c:1041
+msgid ""
+"\n"
+"<i>logged in</i>"
+msgstr ""
+"\n"
+"<i>נכנסת</i>"
+
+#: ../src/greeter.c:1055 ../src/lang.c:125
+msgid "More ..."
+msgstr "עוד ..."
+
+#: ../src/config.c:313
+msgid "Browse for more pictures..."
+msgstr "עיון למציאת תמונות נוספות..."

@@ -1,0 +1,27 @@
+#!/bin/sh
+# Debian lxdm package post-removal script
+# Copyright 2010 Nikolas Poniros <edhunter@sidux.com>
+# Licensed under the GNU General Public License, version 2.  See the file
+# /usr/share/common-licenses/GPL or <http://www.gnu.org/copyleft/gpl.txt>.
+
+
+set -e
+
+if [ "$1" = "purge" ]; then
+  for DIR in /etc/lxdm; do
+    if [ -d "$DIR" ]; then
+      rm -r "$DIR"
+    fi
+  done
+fi
+
+# Test if /etc/systemd/system/display-manager.service is broken now
+SERVICE_FILE=/etc/systemd/system/display-manager.service
+if [ -L $SERVICE_FILE ] && [ ! -e $SERVICE_FILE ]; then
+  echo "WARN: clearing dangling symlink $SERVICE_FILE" >&2
+  rm -f $SERVICE_FILE
+fi
+
+#DEBHELPER#
+
+exit 0

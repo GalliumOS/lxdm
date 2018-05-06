@@ -1,0 +1,2 @@
+debian/local/lxdm.insserv	etc/insserv.conf.d/
+debian/local/lxdm-environment	etc/

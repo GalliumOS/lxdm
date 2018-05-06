@@ -1,0 +1,63 @@
+# Italian translations for x11-xorg package
+# Copyright (C) 2000-2004 Branden Robinson
+# Copyright (C) 2002 Matteo Dell'Amico
+# Copyright (C) 2002 Emanuele Aina
+# Copyright (C) 2004 Luca Monducci
+# Copyright (C) 2004-2007 Danilo Piazzalunga
+# This file is distributed under the same license as the xorg-x11 package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xorg-x11 6.8.2.dfsg.1-10\n"
+"Report-Msgid-Bugs-To: lxdm@packages.debian.org\n"
+"POT-Creation-Date: 2007-05-31 08:04+0200\n"
+"PO-Revision-Date: 2007-03-25 14:40+0200\n"
+"Last-Translator: Danilo Piazzalunga <danilopiazza@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid "Default display manager:"
+msgstr "Display manager predefinito."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"A display manager is a program that provides graphical login capabilities "
+"for the X Window System."
+msgstr ""
+"Un display manager è un programma che fornisce capacità di login grafico per "
+"il sistema X Window."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Only one display manager can manage a given X server, but multiple display "
+"manager packages are installed. Please select which display manager should "
+"run by default."
+msgstr ""
+"Solo un display manager può gestire un dato server X, ma sono installati più "
+"pacchetti di display manager. Scegliere il display manager da usare come "
+"predefinito."
+
+#. Type: select
+#. Description
+#: ../lxdm.templates:2001
+msgid ""
+"Multiple display managers can run simultaneously if they are configured to "
+"manage different servers; to achieve this, configure the display managers "
+"accordingly, edit each of their init scripts in /etc/init.d, and disable the "
+"check for a default display manager."
+msgstr ""
+"Possono essere eseguiti più display manager contemporaneamente, a patto che "
+"siano impostati per gestire server diversi; per fare questo, configurare i "
+"display manager in maniera appropriata, modificare ciascuno dei loro script "
+"di avvio in /etc/init.d e disabilitare il controllo per un display manager "
+"predefinito."
