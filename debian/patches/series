@@ -1,4 +1,9 @@
+15-path-replace.patch
+17-follow-symlink.patch
+22_ubuntu_i18n_oneiric.patch
 23_debian-config.patch
+41-force-reset.patch
+42-fix-user-list.patch
 galliumos-update_lxdm_conf.diff
 galliumos-config
 cros_mouse_scaling.patch

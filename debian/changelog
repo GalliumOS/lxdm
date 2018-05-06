@@ -1,3 +1,29 @@
+lxdm (0.5.3-2.1-galliumos0) bismuth; urgency=medium
+
+  * Updates for GalliumOS 3.0
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 06 May 2018 18:26:59 +0000
+
+lxdm (0.5.3-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop Build-Depends on deprecated libck-connector-dev (Closes: #865043).
+  * Drop ExecStartPre hack from lxdm.service which is no longer necessary.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 14 Feb 2018 18:18:12 +0100
+
+lxdm (0.5.3-2) unstable; urgency=medium
+
+  * Adding 41-force-reset.patch to enforce reset (Closes: #842333).
+  * Adding 42-fix-user-list.patch to fix empty greeter (Closes: #810631).
+  * Adding 17-follow-symlink.patch to follow symlink on config save
+    (Closes: #810632).
+  * Refreshing 15-path-replace.patch and 22_ubuntu_i18n_oneiric.patch.
+  * Bump Standards-Version to 3.9.8.
+  * Adding hardening=+all to DEB_BUILD_MAINT_OPTIONS.
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Fri, 11 Nov 2016 23:58:40 +0200
+
 lxdm (0.5.3-16.04-galliumos4) xenon; urgency=medium
 
   * adjust font, weight, and color for greeter text
@@ -81,6 +107,27 @@ lxdm (0.5.0-3-galliumos2) unstable; urgency=low
   * Removed busname line in service file to prevent lxdm from restarting every 2 mins
 
  -- Hugh Greenberg <hugh@galliumos.org>  Thu, 17 Dec 2015 21:34:36 +0200
+
+lxdm (0.5.3-1) unstable; urgency=low
+
+  * Removing lxsession from Recommends, it doesn't related to lxdm in any way.
+  * Stopping kill all user processes in PostLogout (Closes: #797244).
+  * Merging upstream version 0.5.3 (Closes: #805659 CVE-2015-8308).
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Thu, 26 Nov 2015 13:32:17 +0200
+
+lxdm (0.5.1-1) unstable; urgency=low
+
+  * Removing conflicting BusName statement from lxdm.service (Closes: #781949).
+  * Changing Maintainer e-mail to Alioth based one.
+  * Merging upstream version 0.5.1.
+  * Updating Danish translation for debconf files, by Joe Dalton
+    (Closes: #781342).
+  * Removing 27_format_security.patch - it was applied by upstream.
+  * Refreshing quilt patches.
+  * Moving desktop-base from Depends to Recommends by derivatives request.
+
+ -- Andriy Grytsenko <andrej@rep.kiev.ua>  Sun, 17 May 2015 21:21:41 +0300
 
 lxdm (0.5.0-3) unstable; urgency=low
 
