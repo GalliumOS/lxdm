@@ -1,3 +1,9 @@
+lxdm (0.5.3-2.1-galliumos1) bismuth; urgency=medium
+
+  * Replace awful greeter bg img
+
+ -- reynhout <reynhout@galliumos.org>  Tue, 18 Jun 2019 03:12:08 +0000
+
 lxdm (0.5.3-2.1-galliumos0) bismuth; urgency=medium
 
   * Updates for GalliumOS 3.0
